@@ -15,6 +15,8 @@
 		8BE27AAB2C9DA89000C27144 /* LatestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE27AAA2C9DA89000C27144 /* LatestController.swift */; };
 		8BE27AAD2C9DA8A100C27144 /* RandomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE27AAC2C9DA8A100C27144 /* RandomController.swift */; };
 		8BE27AAF2C9DA8AE00C27144 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE27AAE2C9DA8AE00C27144 /* ProfileController.swift */; };
+		8BE27AB22C9DACEC00C27144 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE27AB12C9DACEC00C27144 /* Extensions.swift */; };
+		8BE27AB42C9DAD1800C27144 /* CreateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE27AB32C9DAD1800C27144 /* CreateController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		8BE27AAA2C9DA89000C27144 /* LatestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestController.swift; sourceTree = "<group>"; };
 		8BE27AAC2C9DA8A100C27144 /* RandomController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomController.swift; sourceTree = "<group>"; };
 		8BE27AAE2C9DA8AE00C27144 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		8BE27AB12C9DACEC00C27144 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		8BE27AB32C9DAD1800C27144 /* CreateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				8BE27AA72C9CC7C200C27144 /* Controller */,
+				8BE27AB02C9DACE200C27144 /* Utils */,
 				8BE27AA62C9CC7BF00C27144 /* Support */,
 				8BE27AA02C9CC78800C27144 /* Info.plist */,
 			);
@@ -85,8 +90,17 @@
 				8BE27AAA2C9DA89000C27144 /* LatestController.swift */,
 				8BE27AAC2C9DA8A100C27144 /* RandomController.swift */,
 				8BE27AAE2C9DA8AE00C27144 /* ProfileController.swift */,
+				8BE27AB32C9DAD1800C27144 /* CreateController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		8BE27AB02C9DACE200C27144 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8BE27AB12C9DACEC00C27144 /* Extensions.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,11 +174,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BE27A932C9CC78600C27144 /* AppDelegate.swift in Sources */,
+				8BE27AB42C9DAD1800C27144 /* CreateController.swift in Sources */,
 				8BE27A952C9CC78600C27144 /* SceneDelegate.swift in Sources */,
 				8BE27AAB2C9DA89000C27144 /* LatestController.swift in Sources */,
 				8BE27AA92C9CC7F200C27144 /* MainTabController.swift in Sources */,
 				8BE27AAD2C9DA8A100C27144 /* RandomController.swift in Sources */,
 				8BE27AAF2C9DA8AE00C27144 /* ProfileController.swift in Sources */,
+				8BE27AB22C9DACEC00C27144 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

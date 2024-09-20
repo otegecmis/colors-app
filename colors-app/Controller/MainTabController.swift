@@ -6,30 +6,41 @@ class MainTabController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewControllers()
+        openLogoutMenu()
     }
     
     // MARK: - Helpers
     func configureViewControllers() {
         view.backgroundColor = .systemBackground
         
-        let latest = templateNavigationController(title: "Latest", image: UIImage(systemName: "paintpalette"), rootViewController: LatestController())
-        let random = templateNavigationController(title: "Random", image: UIImage(systemName: "swatchpalette"), rootViewController: RandomController())
-        let profile = templateNavigationController(title: "Profile", image: UIImage(systemName: "person.crop.circle"), rootViewController: ProfileController())
+        let latest = navigationTabController(title: "Latest", image: UIImage(systemName: "paintpalette"), rootViewController: LatestController())
+        let create = navigationTabController(title: "Create", image: UIImage(systemName: "paintbrush"), rootViewController: CreateController())
+        let random = navigationTabController(title: "Random", image: UIImage(systemName: "swatchpalette"), rootViewController: RandomController())
+        let profile = navigationTabController(title: "Profile", image: UIImage(systemName: "theatermask.and.paintbrush"), rootViewController: ProfileController())
         
-        viewControllers = [latest, random, profile]
+        viewControllers = [latest, create, random, profile]
     }
     
-    func templateNavigationController(title: String, image: UIImage?, rootViewController: UIViewController) -> UINavigationController {
-        let nav = UINavigationController(rootViewController: rootViewController)
-        let appearance = UITabBar.appearance()
-        
-        nav.title = title
-        nav.view.backgroundColor = .systemBackground
-        nav.tabBarItem.image = image
-        nav.tabBarItem.selectedImage?.withTintColor(UIColor.blue)
-        appearance.tintColor = .systemBlue
-        
-        return nav
+    func openLogoutMenu() {
+        if let profileTabBarItemView = self.tabBar.items?[3].value(forKey: "view") as? UIView {
+            let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLogoutMenu))
+            profileTabBarItemView.addGestureRecognizer(longPressGesture)
+        }
+    }
+    
+    func logout(action: UIAlertAction) {
+        print("DEBUG: logout()")
+    }
+    
+    // MARK: - Actions
+    @objc func handleLogoutMenu(gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            let alertController = UIAlertController(title: "Name Surname - @username", message: nil, preferredStyle: .actionSheet)
+            alertController.addAction(UIAlertAction(title: "Logout", style: .destructive, handler: logout))
+            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            alertController.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
+            present(alertController, animated: true)
+        }
     }
 }
 
