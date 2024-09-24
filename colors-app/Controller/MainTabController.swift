@@ -1,10 +1,12 @@
 import UIKit
+import FirebaseAuth
 
 class MainTabController: UITabBarController {
     
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkIfUserIsLoggedIn()
         configureViewControllers()
         openLogoutMenu()
     }
@@ -19,6 +21,16 @@ class MainTabController: UITabBarController {
         let profile = navigationTabController(title: "Profile", image: UIImage(systemName: "theatermask.and.paintbrush"), rootViewController: ProfileController())
         
         viewControllers = [latest, create, random, profile]
+    }
+    
+    func checkIfUserIsLoggedIn() {
+        if Auth.auth().currentUser == nil {
+            DispatchQueue.main.async {
+                let nav = UINavigationController(rootViewController: SignInController())
+                nav.modalPresentationStyle = .fullScreen
+                self.present(nav, animated: true, completion: nil)
+            }
+        }
     }
     
     func openLogoutMenu() {
@@ -46,6 +58,5 @@ class MainTabController: UITabBarController {
 
 @available(iOS 17.0, *)
 #Preview {
-    let mainTabController = MainTabController()
-    return mainTabController
+    return MainTabController()
 }

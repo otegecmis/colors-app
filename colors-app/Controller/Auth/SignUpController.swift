@@ -56,12 +56,12 @@ class SignUpController: UIViewController {
         backSignIn.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            self.signUpHeaderView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor, constant: 10),
+            self.signUpHeaderView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor, constant: 5),
             self.signUpHeaderView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.signUpHeaderView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.signUpHeaderView.heightAnchor.constraint(equalToConstant: 222),
+            self.signUpHeaderView.heightAnchor.constraint(equalToConstant: 210),
             
-            self.nameTextField.topAnchor.constraint(equalTo: signUpHeaderView.bottomAnchor, constant: 15),
+            self.nameTextField.topAnchor.constraint(equalTo: signUpHeaderView.bottomAnchor, constant: 0),
             self.nameTextField.centerXAnchor.constraint(equalTo: signUpHeaderView.centerXAnchor),
             self.nameTextField.heightAnchor.constraint(equalToConstant: 55),
             self.nameTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),

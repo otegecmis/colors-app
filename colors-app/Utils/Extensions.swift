@@ -10,8 +10,8 @@ extension UITabBarController {
         nav.title = title
         nav.view.backgroundColor = .systemBackground
         nav.tabBarItem.image = image
-        nav.tabBarItem.selectedImage?.withTintColor(UIColor.blue)
-        appearance.tintColor = .systemBlue
+        nav.tabBarItem.selectedImage?.withTintColor(UIColor.systemBrown)
+        appearance.tintColor = .systemBrown
         
         return nav
     }
