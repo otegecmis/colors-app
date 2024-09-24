@@ -18,6 +18,13 @@ class SignInController: UIViewController {
         return button
     }()
     
+    private lazy var goContact: UIButton = {
+        let button = UIButton(type: .system)
+        button.attributedTitle(firstPart: "Do you need help?", secondPart: "Contact Us")
+        
+        return button
+    }()
+    
     private lazy var goSignUp: UIButton = {
         let button = UIButton(type: .system)
         button.attributedTitle(firstPart: "Don't have an account?", secondPart: "Sign Up")
@@ -46,6 +53,7 @@ class SignInController: UIViewController {
         self.view.addSubview(passwordTextField)
         self.view.addSubview(signInButton)
         self.view.addSubview(goForgotPassword)
+        self.view.addSubview(goContact)
         self.view.addSubview(goSignUp)
         
         signInHeaderView.translatesAutoresizingMaskIntoConstraints = false
@@ -56,6 +64,7 @@ class SignInController: UIViewController {
         signInButton.translatesAutoresizingMaskIntoConstraints = false
         goSignUp.translatesAutoresizingMaskIntoConstraints = false
         goForgotPassword.translatesAutoresizingMaskIntoConstraints = false
+        goContact.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             self.signInHeaderView.topAnchor.constraint(equalTo: self.view.layoutMarginsGuide.topAnchor, constant: 5),
@@ -80,6 +89,9 @@ class SignInController: UIViewController {
             
             self.goForgotPassword.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 15),
             self.goForgotPassword.centerXAnchor.constraint(equalTo: signInHeaderView.centerXAnchor),
+            
+            self.goContact.topAnchor.constraint(equalTo: goForgotPassword.bottomAnchor, constant: 5),
+            self.goContact.centerXAnchor.constraint(equalTo: signInHeaderView.centerXAnchor),
     
             self.goSignUp.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 16),
             self.goSignUp.centerXAnchor.constraint(equalTo: signInHeaderView.centerXAnchor)
