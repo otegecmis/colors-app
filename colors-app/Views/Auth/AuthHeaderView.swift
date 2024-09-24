@@ -6,6 +6,7 @@ class AuthHeaderView: UIView {
     enum CustomTextFieldType {
         case signup
         case signin
+        case reset
     }
     
     private let logoImageView: UIImageView = {
@@ -83,6 +84,12 @@ class AuthHeaderView: UIView {
         case .signin:
             if let image = UIImage(systemName: "paintpalette") {
                 logoImageView.image = image.withRenderingMode(.alwaysOriginal)
+            }
+        case .reset:
+            if let image = UIImage(systemName: "key") {
+                let tintedImage = image.withRenderingMode(.alwaysOriginal)
+                logoImageView.tintColor = UIColor.systemBrown
+                logoImageView.image = tintedImage
             }
         }
     }

@@ -99,7 +99,8 @@ class SignInController: UIViewController {
     }
     
     @objc private func handleGoForgotPassword() {
-        print("DEBUG: handleShowResetPassword()")
+        let controller = ResetPassword()
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 
