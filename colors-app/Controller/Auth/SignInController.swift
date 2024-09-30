@@ -37,6 +37,7 @@ class SignInController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureUI()
+        self.configureKeyboardHandling()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,7 +45,20 @@ class SignInController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
+    // Deinitializer
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     // MARK: - Helpers
+    private func configureKeyboardHandling() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+    }
+    
     private func configureUI() {
         self.view.backgroundColor = .systemBackground
         
@@ -92,8 +106,8 @@ class SignInController: UIViewController {
             
             self.goContact.topAnchor.constraint(equalTo: goForgotPassword.bottomAnchor, constant: 5),
             self.goContact.centerXAnchor.constraint(equalTo: signInHeaderView.centerXAnchor),
-    
-            self.goSignUp.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 16),
+            
+            self.goSignUp.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             self.goSignUp.centerXAnchor.constraint(equalTo: signInHeaderView.centerXAnchor)
         ])
         
@@ -102,7 +116,8 @@ class SignInController: UIViewController {
     
     // MARK: - Actions
     @objc private func doSignIn() {
-        print("DEBUG: doSignIn()")
+        presentAlertOnMainThread(title: "Warning", message: "Sign in is not implemented yet.", buttonTitle: "Done")
+        return
     }
     
     @objc private func handleGoSignUp() {

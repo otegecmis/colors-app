@@ -20,6 +20,7 @@ class ResetPassword: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureUI()
+        self.configureKeyboardHandling()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,7 +28,20 @@ class ResetPassword: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
+    // Deinitializer
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     // MARK: - Helpers
+    private func configureKeyboardHandling() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+    }
+    
     private func configureUI() {
         self.view.backgroundColor = .systemBackground
         
@@ -56,8 +70,8 @@ class ResetPassword: UIViewController {
             self.resetButton.centerXAnchor.constraint(equalTo: signInHeaderView.centerXAnchor),
             self.resetButton.heightAnchor.constraint(equalToConstant: 55),
             self.resetButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
-    
-            self.backSignIn.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 16),
+            
+            self.backSignIn.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             self.backSignIn.centerXAnchor.constraint(equalTo: signInHeaderView.centerXAnchor)
         ])
         
@@ -66,12 +80,30 @@ class ResetPassword: UIViewController {
     
     // MARK: - Actions
     @objc private func doReset() {
-        print("DEBUG: doReset()")
+        presentAlertOnMainThread(title: "Warning", message: "Reset password is not implemented yet.", buttonTitle: "Done")
+        return
     }
     
     @objc private func handleBackSignIn() {
-        let controller = SignInController()
-        navigationController?.pushViewController(controller, animated: true)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @objc override func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if let activeField = UIResponder.currentFirstResponder as? UIView {
+                let activeFieldFrame = activeField.convert(activeField.bounds, to: self.view)
+                let keyboardTop = self.view.frame.height - keyboardSize.height
+                let overlap = activeFieldFrame.maxY - keyboardTop
+                
+                if overlap > 0 {
+                    self.view.frame.origin.y = -overlap
+                }
+            }
+        }
+    }
+    
+    @objc override func keyboardWillHide(notification: NSNotification) {
+        self.view.frame.origin.y = 0
     }
 }
 
