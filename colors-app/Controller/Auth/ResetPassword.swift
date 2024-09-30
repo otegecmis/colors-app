@@ -28,17 +28,8 @@ class ResetPassword: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    // Deinitializer
-    deinit {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
     // MARK: - Helpers
     private func configureKeyboardHandling() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
     }
     
@@ -88,22 +79,9 @@ class ResetPassword: UIViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    @objc override func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if let activeField = UIResponder.currentFirstResponder as? UIView {
-                let activeFieldFrame = activeField.convert(activeField.bounds, to: self.view)
-                let keyboardTop = self.view.frame.height - keyboardSize.height
-                let overlap = activeFieldFrame.maxY - keyboardTop
-                
-                if overlap > 0 {
-                    self.view.frame.origin.y = -overlap
-                }
-            }
-        }
-    }
-    
-    @objc override func keyboardWillHide(notification: NSNotification) {
-        self.view.frame.origin.y = 0
+    // MARK: - Keyboard Handling
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 

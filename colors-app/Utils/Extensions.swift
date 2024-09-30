@@ -16,47 +16,6 @@ extension UIViewController {
     }
 }
 
-// MARK: - Keyboard Handling
-extension UIViewController {
-    
-    // MARK: - Helpers
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height / 3
-            }
-        }
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-}
-
-// MARK: - UIResponder
-extension UIResponder {
-    
-    // MARK: - Properties
-    private static weak var _currentFirstResponder: UIResponder?
-    
-    static var currentFirstResponder: UIResponder? {
-        _currentFirstResponder = nil
-        UIApplication.shared.sendAction(#selector(findFirstResponder), to: nil, from: nil, for: nil)
-        return _currentFirstResponder
-    }
-    
-    // MARK: - Helpers
-    @objc private func findFirstResponder() {
-        UIResponder._currentFirstResponder = self
-    }
-}
-
 // MARK: - UITabBarController
 extension UITabBarController {
     
