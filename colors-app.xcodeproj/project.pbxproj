@@ -13,6 +13,9 @@
 		8B24100B2CA1991F004D32F0 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B24100A2CA1991F004D32F0 /* AuthTextField.swift */; };
 		8B2410102CA1A383004D32F0 /* AuthHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B24100F2CA1A37E004D32F0 /* AuthHeaderView.swift */; };
 		8B2410122CA1AC73004D32F0 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2410112CA1AC6A004D32F0 /* SignUpController.swift */; };
+		8B75B6772CA437E500D2A02D /* AlertLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75B6762CA437E300D2A02D /* AlertLabels.swift */; };
+		8B75B67A2CA4380C00D2A02D /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75B6792CA4380700D2A02D /* AlertView.swift */; };
+		8B75B67C2CA439BB00D2A02D /* AlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75B67B2CA439B900D2A02D /* AlertButton.swift */; };
 		8B82DE4D2CA2E0CD0072DD2C /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82DE4C2CA2E0C90072DD2C /* SignInController.swift */; };
 		8B82DE4F2CA2E1D30072DD2C /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82DE4E2CA2E1D00072DD2C /* Buttons.swift */; };
 		8B82DE512CA2E76B0072DD2C /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82DE502CA2E7650072DD2C /* ResetPassword.swift */; };
@@ -33,6 +36,9 @@
 		8B24100A2CA1991F004D32F0 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		8B24100F2CA1A37E004D32F0 /* AuthHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeaderView.swift; sourceTree = "<group>"; };
 		8B2410112CA1AC6A004D32F0 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		8B75B6762CA437E300D2A02D /* AlertLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertLabels.swift; sourceTree = "<group>"; };
+		8B75B6792CA4380700D2A02D /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		8B75B67B2CA439B900D2A02D /* AlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertButton.swift; sourceTree = "<group>"; };
 		8B82DE4C2CA2E0C90072DD2C /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		8B82DE4E2CA2E1D00072DD2C /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		8B82DE502CA2E7650072DD2C /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
@@ -76,6 +82,7 @@
 		8B2410022CA18F86004D32F0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8B75B6782CA4380200D2A02D /* Alert */,
 				8B2410092CA1942B004D32F0 /* Auth */,
 				8B82DE4E2CA2E1D00072DD2C /* Buttons.swift */,
 			);
@@ -89,6 +96,16 @@
 				8B24100A2CA1991F004D32F0 /* AuthTextField.swift */,
 			);
 			path = Auth;
+			sourceTree = "<group>";
+		};
+		8B75B6782CA4380200D2A02D /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				8B75B67B2CA439B900D2A02D /* AlertButton.swift */,
+				8B75B6762CA437E300D2A02D /* AlertLabels.swift */,
+				8B75B6792CA4380700D2A02D /* AlertView.swift */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		8BE27A862C9CC78600C27144 = {
@@ -237,7 +254,10 @@
 				8B24100B2CA1991F004D32F0 /* AuthTextField.swift in Sources */,
 				8BE27AAD2C9DA8A100C27144 /* RandomController.swift in Sources */,
 				8BE27AAF2C9DA8AE00C27144 /* ProfileController.swift in Sources */,
+				8B75B6772CA437E500D2A02D /* AlertLabels.swift in Sources */,
 				8B82DE512CA2E76B0072DD2C /* ResetPassword.swift in Sources */,
+				8B75B67C2CA439BB00D2A02D /* AlertButton.swift in Sources */,
+				8B75B67A2CA4380C00D2A02D /* AlertView.swift in Sources */,
 				8B2410102CA1A383004D32F0 /* AuthHeaderView.swift in Sources */,
 				8BE27AB22C9DACEC00C27144 /* Extensions.swift in Sources */,
 			);
