@@ -19,6 +19,7 @@ class ResetPassword: UIViewController {
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.configureUI()
         self.configureKeyboardHandling()
     }

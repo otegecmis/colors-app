@@ -6,6 +6,7 @@ class MainTabController: UITabBarController {
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         checkIfUserIsLoggedIn()
         configureViewControllers()
         openLogoutMenu()
@@ -41,13 +42,15 @@ class MainTabController: UITabBarController {
     }
     
     func logout(action: UIAlertAction) {
-        print("DEBUG: logout()")
+        presentAlertOnMainThread(title: "Warning", message: "Logout is not implemented yet.", buttonTitle: "Done")
+        return
     }
     
     // MARK: - Actions
     @objc func handleLogoutMenu(gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
             let alertController = UIAlertController(title: "Name Surname - @username", message: nil, preferredStyle: .actionSheet)
+            
             alertController.addAction(UIAlertAction(title: "Logout", style: .destructive, handler: logout))
             alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
             alertController.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
