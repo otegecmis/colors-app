@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8B240FF92CA18D78004D32F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B240FF82CA18D78004D32F0 /* GoogleService-Info.plist */; };
 		8B240FFC2CA18E63004D32F0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8B240FFB2CA18E63004D32F0 /* FirebaseAuth */; };
 		8B240FFE2CA18E63004D32F0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8B240FFD2CA18E63004D32F0 /* FirebaseFirestore */; };
 		8B24100B2CA1991F004D32F0 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B24100A2CA1991F004D32F0 /* AuthTextField.swift */; };
@@ -19,6 +18,12 @@
 		8B82DE4D2CA2E0CD0072DD2C /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82DE4C2CA2E0C90072DD2C /* SignInController.swift */; };
 		8B82DE4F2CA2E1D30072DD2C /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82DE4E2CA2E1D00072DD2C /* Buttons.swift */; };
 		8B82DE512CA2E76B0072DD2C /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82DE502CA2E7650072DD2C /* ResetPassword.swift */; };
+		8BAFF3E42CAD5D0F004FD64B /* SignUpController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFF3E32CAD5D08004FD64B /* SignUpController+Extension.swift */; };
+		8BAFF3E62CAD5DF8004FD64B /* SignInController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFF3E52CAD5DF0004FD64B /* SignInController+Extension.swift */; };
+		8BAFF3E82CAD5E8A004FD64B /* ResetPassword+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFF3E72CAD5E85004FD64B /* ResetPassword+Extension.swift */; };
+		8BAFF3EA2CAD5EEF004FD64B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFF3E92CAD5EEB004FD64B /* UIViewController+Extension.swift */; };
+		8BAFF3EC2CAD5F0B004FD64B /* UITabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFF3EB2CAD5F06004FD64B /* UITabBarController+Extension.swift */; };
+		8BAFF3EE2CAD5F21004FD64B /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFF3ED2CAD5F1D004FD64B /* UIButton+Extension.swift */; };
 		8BE27A932C9CC78600C27144 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE27A922C9CC78600C27144 /* AppDelegate.swift */; };
 		8BE27A952C9CC78600C27144 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE27A942C9CC78600C27144 /* SceneDelegate.swift */; };
 		8BE27A9C2C9CC78800C27144 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BE27A9B2C9CC78800C27144 /* Assets.xcassets */; };
@@ -27,12 +32,10 @@
 		8BE27AAB2C9DA89000C27144 /* LatestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE27AAA2C9DA89000C27144 /* LatestController.swift */; };
 		8BE27AAD2C9DA8A100C27144 /* RandomController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE27AAC2C9DA8A100C27144 /* RandomController.swift */; };
 		8BE27AAF2C9DA8AE00C27144 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE27AAE2C9DA8AE00C27144 /* ProfileController.swift */; };
-		8BE27AB22C9DACEC00C27144 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE27AB12C9DACEC00C27144 /* Extensions.swift */; };
 		8BE27AB42C9DAD1800C27144 /* CreateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE27AB32C9DAD1800C27144 /* CreateController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8B240FF82CA18D78004D32F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8B24100A2CA1991F004D32F0 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		8B24100F2CA1A37E004D32F0 /* AuthHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeaderView.swift; sourceTree = "<group>"; };
 		8B2410112CA1AC6A004D32F0 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
@@ -42,6 +45,12 @@
 		8B82DE4C2CA2E0C90072DD2C /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		8B82DE4E2CA2E1D00072DD2C /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		8B82DE502CA2E7650072DD2C /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
+		8BAFF3E32CAD5D08004FD64B /* SignUpController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpController+Extension.swift"; sourceTree = "<group>"; };
+		8BAFF3E52CAD5DF0004FD64B /* SignInController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignInController+Extension.swift"; sourceTree = "<group>"; };
+		8BAFF3E72CAD5E85004FD64B /* ResetPassword+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ResetPassword+Extension.swift"; sourceTree = "<group>"; };
+		8BAFF3E92CAD5EEB004FD64B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		8BAFF3EB2CAD5F06004FD64B /* UITabBarController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extension.swift"; sourceTree = "<group>"; };
+		8BAFF3ED2CAD5F1D004FD64B /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		8BE27A8F2C9CC78600C27144 /* colors-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "colors-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE27A922C9CC78600C27144 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BE27A942C9CC78600C27144 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,7 +61,6 @@
 		8BE27AAA2C9DA89000C27144 /* LatestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestController.swift; sourceTree = "<group>"; };
 		8BE27AAC2C9DA8A100C27144 /* RandomController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomController.swift; sourceTree = "<group>"; };
 		8BE27AAE2C9DA8AE00C27144 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
-		8BE27AB12C9DACEC00C27144 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8BE27AB32C9DAD1800C27144 /* CreateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,9 +80,9 @@
 		8B240FFF2CA18F3B004D32F0 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				8B82DE502CA2E7650072DD2C /* ResetPassword.swift */,
 				8B82DE4C2CA2E0C90072DD2C /* SignInController.swift */,
 				8B2410112CA1AC6A004D32F0 /* SignUpController.swift */,
+				8B82DE502CA2E7650072DD2C /* ResetPassword.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -108,6 +116,27 @@
 			path = Alert;
 			sourceTree = "<group>";
 		};
+		8BAFF3E12CAD5CD4004FD64B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8BAFF3E22CAD5D02004FD64B /* Auth */,
+				8BAFF3E92CAD5EEB004FD64B /* UIViewController+Extension.swift */,
+				8BAFF3EB2CAD5F06004FD64B /* UITabBarController+Extension.swift */,
+				8BAFF3ED2CAD5F1D004FD64B /* UIButton+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8BAFF3E22CAD5D02004FD64B /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				8BAFF3E52CAD5DF0004FD64B /* SignInController+Extension.swift */,
+				8BAFF3E32CAD5D08004FD64B /* SignUpController+Extension.swift */,
+				8BAFF3E72CAD5E85004FD64B /* ResetPassword+Extension.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		8BE27A862C9CC78600C27144 = {
 			isa = PBXGroup;
 			children = (
@@ -129,9 +158,9 @@
 			children = (
 				8B2410022CA18F86004D32F0 /* Views */,
 				8BE27AA72C9CC7C200C27144 /* Controller */,
+				8BAFF3E12CAD5CD4004FD64B /* Extensions */,
 				8BE27AB02C9DACE200C27144 /* Utils */,
 				8BE27AA62C9CC7BF00C27144 /* Support */,
-				8B240FF82CA18D78004D32F0 /* GoogleService-Info.plist */,
 				8BE27AA02C9CC78800C27144 /* Info.plist */,
 			);
 			path = "colors-app";
@@ -164,7 +193,6 @@
 		8BE27AB02C9DACE200C27144 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				8BE27AB12C9DACEC00C27144 /* Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -232,7 +260,6 @@
 			files = (
 				8BE27A9C2C9CC78800C27144 /* Assets.xcassets in Resources */,
 				8BE27A9F2C9CC78800C27144 /* Base in Resources */,
-				8B240FF92CA18D78004D32F0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +273,8 @@
 				8BE27A932C9CC78600C27144 /* AppDelegate.swift in Sources */,
 				8B2410122CA1AC73004D32F0 /* SignUpController.swift in Sources */,
 				8B82DE4D2CA2E0CD0072DD2C /* SignInController.swift in Sources */,
+				8BAFF3EC2CAD5F0B004FD64B /* UITabBarController+Extension.swift in Sources */,
+				8BAFF3E62CAD5DF8004FD64B /* SignInController+Extension.swift in Sources */,
 				8BE27AB42C9DAD1800C27144 /* CreateController.swift in Sources */,
 				8BE27A952C9CC78600C27144 /* SceneDelegate.swift in Sources */,
 				8BE27AAB2C9DA89000C27144 /* LatestController.swift in Sources */,
@@ -256,10 +285,13 @@
 				8BE27AAF2C9DA8AE00C27144 /* ProfileController.swift in Sources */,
 				8B75B6772CA437E500D2A02D /* AlertLabels.swift in Sources */,
 				8B82DE512CA2E76B0072DD2C /* ResetPassword.swift in Sources */,
+				8BAFF3E82CAD5E8A004FD64B /* ResetPassword+Extension.swift in Sources */,
 				8B75B67C2CA439BB00D2A02D /* AlertButton.swift in Sources */,
 				8B75B67A2CA4380C00D2A02D /* AlertView.swift in Sources */,
 				8B2410102CA1A383004D32F0 /* AuthHeaderView.swift in Sources */,
-				8BE27AB22C9DACEC00C27144 /* Extensions.swift in Sources */,
+				8BAFF3EA2CAD5EEF004FD64B /* UIViewController+Extension.swift in Sources */,
+				8BAFF3E42CAD5D0F004FD64B /* SignUpController+Extension.swift in Sources */,
+				8BAFF3EE2CAD5F21004FD64B /* UIButton+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

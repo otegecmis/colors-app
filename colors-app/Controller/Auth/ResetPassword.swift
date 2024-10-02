@@ -21,7 +21,6 @@ class ResetPassword: UIViewController {
         super.viewDidLoad()
         
         self.configureUI()
-        self.configureKeyboardHandling()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,10 +29,6 @@ class ResetPassword: UIViewController {
     }
     
     // MARK: - Helpers
-    private func configureKeyboardHandling() {
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
-    }
-    
     private func configureUI() {
         self.view.backgroundColor = .systemBackground
         
@@ -68,6 +63,8 @@ class ResetPassword: UIViewController {
         ])
         
         self.resetButton.addTarget(self, action: #selector(doReset), for: .touchUpInside)
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
     }
     
     // MARK: - Actions
@@ -78,11 +75,6 @@ class ResetPassword: UIViewController {
     
     @objc private func handleBackSignIn() {
         navigationController?.popViewController(animated: true)
-    }
-    
-    // MARK: - Keyboard Handling
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
     }
 }
 

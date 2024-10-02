@@ -25,7 +25,7 @@ class SignUpController: UIViewController {
         super.viewDidLoad()
         
         self.configureUI()
-        self.configureKeyboardHandling()
+        self.configureNotificationObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,11 +40,9 @@ class SignUpController: UIViewController {
     }
     
     // MARK: - Helpers
-    private func configureKeyboardHandling() {
+    private func configureNotificationObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
     }
     
     private func configureUI() {
@@ -106,6 +104,8 @@ class SignUpController: UIViewController {
         ])
         
         self.signUpButton.addTarget(self, action: #selector(doSignUp), for: .touchUpInside)
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
     }
     
     // MARK: - Actions
@@ -116,25 +116,6 @@ class SignUpController: UIViewController {
     
     @objc private func handleBackSignIn() {
         navigationController?.popViewController(animated: true)
-    }
-    
-    // MARK: - Keyboard Handling
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height / 3
-            }
-        }
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
     }
 }
 
