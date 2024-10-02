@@ -17,13 +17,17 @@
 		8B75B67C2CA439BB00D2A02D /* AlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75B67B2CA439B900D2A02D /* AlertButton.swift */; };
 		8B82DE4D2CA2E0CD0072DD2C /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82DE4C2CA2E0C90072DD2C /* SignInController.swift */; };
 		8B82DE4F2CA2E1D30072DD2C /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82DE4E2CA2E1D00072DD2C /* Buttons.swift */; };
-		8B82DE512CA2E76B0072DD2C /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82DE502CA2E7650072DD2C /* ResetPassword.swift */; };
+		8B82DE512CA2E76B0072DD2C /* ResetPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82DE502CA2E7650072DD2C /* ResetPasswordController.swift */; };
 		8BAFF3E42CAD5D0F004FD64B /* SignUpController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFF3E32CAD5D08004FD64B /* SignUpController+Extension.swift */; };
 		8BAFF3E62CAD5DF8004FD64B /* SignInController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFF3E52CAD5DF0004FD64B /* SignInController+Extension.swift */; };
-		8BAFF3E82CAD5E8A004FD64B /* ResetPassword+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFF3E72CAD5E85004FD64B /* ResetPassword+Extension.swift */; };
+		8BAFF3E82CAD5E8A004FD64B /* ResetPasswordController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFF3E72CAD5E85004FD64B /* ResetPasswordController+Extension.swift */; };
 		8BAFF3EA2CAD5EEF004FD64B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFF3E92CAD5EEB004FD64B /* UIViewController+Extension.swift */; };
 		8BAFF3EC2CAD5F0B004FD64B /* UITabBarController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFF3EB2CAD5F06004FD64B /* UITabBarController+Extension.swift */; };
 		8BAFF3EE2CAD5F21004FD64B /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFF3ED2CAD5F1D004FD64B /* UIButton+Extension.swift */; };
+		8BAFF3F42CAD61A5004FD64B /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFF3F32CAD61A2004FD64B /* SignInViewModel.swift */; };
+		8BAFF3F62CAD61AD004FD64B /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFF3F52CAD61AA004FD64B /* AuthViewModel.swift */; };
+		8BAFF3F82CAD6804004FD64B /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFF3F72CAD67FD004FD64B /* ResetPasswordViewModel.swift */; };
+		8BAFF3FA2CAD72F6004FD64B /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFF3F92CAD72F1004FD64B /* SignUpViewModel.swift */; };
 		8BE27A932C9CC78600C27144 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE27A922C9CC78600C27144 /* AppDelegate.swift */; };
 		8BE27A952C9CC78600C27144 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE27A942C9CC78600C27144 /* SceneDelegate.swift */; };
 		8BE27A9C2C9CC78800C27144 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BE27A9B2C9CC78800C27144 /* Assets.xcassets */; };
@@ -44,13 +48,17 @@
 		8B75B67B2CA439B900D2A02D /* AlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertButton.swift; sourceTree = "<group>"; };
 		8B82DE4C2CA2E0C90072DD2C /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		8B82DE4E2CA2E1D00072DD2C /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
-		8B82DE502CA2E7650072DD2C /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
+		8B82DE502CA2E7650072DD2C /* ResetPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordController.swift; sourceTree = "<group>"; };
 		8BAFF3E32CAD5D08004FD64B /* SignUpController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpController+Extension.swift"; sourceTree = "<group>"; };
 		8BAFF3E52CAD5DF0004FD64B /* SignInController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignInController+Extension.swift"; sourceTree = "<group>"; };
-		8BAFF3E72CAD5E85004FD64B /* ResetPassword+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ResetPassword+Extension.swift"; sourceTree = "<group>"; };
+		8BAFF3E72CAD5E85004FD64B /* ResetPasswordController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ResetPasswordController+Extension.swift"; sourceTree = "<group>"; };
 		8BAFF3E92CAD5EEB004FD64B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		8BAFF3EB2CAD5F06004FD64B /* UITabBarController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+Extension.swift"; sourceTree = "<group>"; };
 		8BAFF3ED2CAD5F1D004FD64B /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		8BAFF3F32CAD61A2004FD64B /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		8BAFF3F52CAD61AA004FD64B /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		8BAFF3F72CAD67FD004FD64B /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
+		8BAFF3F92CAD72F1004FD64B /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		8BE27A8F2C9CC78600C27144 /* colors-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "colors-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BE27A922C9CC78600C27144 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BE27A942C9CC78600C27144 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,7 +90,7 @@
 			children = (
 				8B82DE4C2CA2E0C90072DD2C /* SignInController.swift */,
 				8B2410112CA1AC6A004D32F0 /* SignUpController.swift */,
-				8B82DE502CA2E7650072DD2C /* ResetPassword.swift */,
+				8B82DE502CA2E7650072DD2C /* ResetPasswordController.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -132,7 +140,26 @@
 			children = (
 				8BAFF3E52CAD5DF0004FD64B /* SignInController+Extension.swift */,
 				8BAFF3E32CAD5D08004FD64B /* SignUpController+Extension.swift */,
-				8BAFF3E72CAD5E85004FD64B /* ResetPassword+Extension.swift */,
+				8BAFF3E72CAD5E85004FD64B /* ResetPasswordController+Extension.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		8BAFF3F12CAD6191004FD64B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8BAFF3F22CAD619B004FD64B /* Auth */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8BAFF3F22CAD619B004FD64B /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				8BAFF3F52CAD61AA004FD64B /* AuthViewModel.swift */,
+				8BAFF3F32CAD61A2004FD64B /* SignInViewModel.swift */,
+				8BAFF3F92CAD72F1004FD64B /* SignUpViewModel.swift */,
+				8BAFF3F72CAD67FD004FD64B /* ResetPasswordViewModel.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -157,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				8B2410022CA18F86004D32F0 /* Views */,
+				8BAFF3F12CAD6191004FD64B /* ViewModel */,
 				8BE27AA72C9CC7C200C27144 /* Controller */,
 				8BAFF3E12CAD5CD4004FD64B /* Extensions */,
 				8BE27AB02C9DACE200C27144 /* Utils */,
@@ -274,6 +302,8 @@
 				8B2410122CA1AC73004D32F0 /* SignUpController.swift in Sources */,
 				8B82DE4D2CA2E0CD0072DD2C /* SignInController.swift in Sources */,
 				8BAFF3EC2CAD5F0B004FD64B /* UITabBarController+Extension.swift in Sources */,
+				8BAFF3F42CAD61A5004FD64B /* SignInViewModel.swift in Sources */,
+				8BAFF3F82CAD6804004FD64B /* ResetPasswordViewModel.swift in Sources */,
 				8BAFF3E62CAD5DF8004FD64B /* SignInController+Extension.swift in Sources */,
 				8BE27AB42C9DAD1800C27144 /* CreateController.swift in Sources */,
 				8BE27A952C9CC78600C27144 /* SceneDelegate.swift in Sources */,
@@ -282,13 +312,15 @@
 				8BE27AA92C9CC7F200C27144 /* MainTabController.swift in Sources */,
 				8B24100B2CA1991F004D32F0 /* AuthTextField.swift in Sources */,
 				8BE27AAD2C9DA8A100C27144 /* RandomController.swift in Sources */,
+				8BAFF3FA2CAD72F6004FD64B /* SignUpViewModel.swift in Sources */,
 				8BE27AAF2C9DA8AE00C27144 /* ProfileController.swift in Sources */,
 				8B75B6772CA437E500D2A02D /* AlertLabels.swift in Sources */,
-				8B82DE512CA2E76B0072DD2C /* ResetPassword.swift in Sources */,
-				8BAFF3E82CAD5E8A004FD64B /* ResetPassword+Extension.swift in Sources */,
+				8B82DE512CA2E76B0072DD2C /* ResetPasswordController.swift in Sources */,
+				8BAFF3E82CAD5E8A004FD64B /* ResetPasswordController+Extension.swift in Sources */,
 				8B75B67C2CA439BB00D2A02D /* AlertButton.swift in Sources */,
 				8B75B67A2CA4380C00D2A02D /* AlertView.swift in Sources */,
 				8B2410102CA1A383004D32F0 /* AuthHeaderView.swift in Sources */,
+				8BAFF3F62CAD61AD004FD64B /* AuthViewModel.swift in Sources */,
 				8BAFF3EA2CAD5EEF004FD64B /* UIViewController+Extension.swift in Sources */,
 				8BAFF3E42CAD5D0F004FD64B /* SignUpController+Extension.swift in Sources */,
 				8BAFF3EE2CAD5F21004FD64B /* UIButton+Extension.swift in Sources */,

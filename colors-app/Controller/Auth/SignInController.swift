@@ -4,11 +4,8 @@ class SignInController: UIViewController {
     
     // MARK: - Properties
     private let signInHeaderView = AuthHeaderView(title: "Sign In", subtitle: "Welcome back!", type: .signin)
-    
     private let emailTextField = AuthTextField(fieldType: .email)
     private let passwordTextField = AuthTextField(fieldType: .password)
-    
-    private let signInButton = CButton(title: "Sign In", hasBackground: true)
     
     private lazy var goForgotPassword: UIButton = {
         let button = UIButton(type: .system)
@@ -32,6 +29,16 @@ class SignInController: UIViewController {
         
         return button
     }()
+    
+    public lazy var signInButton: UIButton = {
+        let button = CButton(title: "Sign In", hasBackground: true)
+        button.backgroundColor = .systemBrown.withAlphaComponent(0.5)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        
+        return button
+    }()
+    
+    public var viewModel = SignInViewModel()
     
     // MARK: - Lifecycles
     override func viewDidLoad() {
@@ -113,11 +120,29 @@ class SignInController: UIViewController {
         self.signInButton.addTarget(self, action: #selector(doSignIn), for: .touchUpInside)
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+        
+        self.emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        self.passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        
+        updateForm()
     }
     
     // MARK: - Actions
+    @objc func textDidChange(sender: UITextField) {
+        if sender == emailTextField {
+            viewModel.email = sender.text
+        } else {
+            viewModel.password = sender.text
+        }
+        
+        updateForm()
+    }
+    
     @objc private func doSignIn() {
-        presentAlertOnMainThread(title: "Warning", message: "Sign in is not implemented yet.", buttonTitle: "Done")
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        presentAlertOnMainThread(title: "Warning", message: "Sign in is not implemented yet. E-Mail is \(email), password is \(password).", buttonTitle: "Done")
         return
     }
     
@@ -127,7 +152,7 @@ class SignInController: UIViewController {
     }
     
     @objc private func handleGoForgotPassword() {
-        let controller = ResetPassword()
+        let controller = ResetPasswordController()
         navigationController?.pushViewController(controller, animated: true)
     }
 }

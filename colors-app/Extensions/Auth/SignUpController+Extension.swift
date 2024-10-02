@@ -21,3 +21,14 @@ extension SignUpController {
         view.endEditing(true)
     }
 }
+
+
+extension SignUpController: FormViewModel {
+    
+    // MARK: - Helpers
+    func updateForm() {
+        signUpButton.backgroundColor = viewModel.buttonBGColor
+        signUpButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+        signUpButton.isEnabled = viewModel.formIsValid
+    }
+}
