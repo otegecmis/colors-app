@@ -1,4 +1,5 @@
 import UIKit
+import SafariServices
 
 class SignInController: UIViewController {
     
@@ -18,6 +19,7 @@ class SignInController: UIViewController {
     private lazy var goContact: UIButton = {
         let button = UIButton(type: .system)
         button.attributedTitle(firstPart: "Do you need help?", secondPart: "Contact Us")
+        button.addTarget(self, action: #selector(handleGoContact), for: .touchUpInside)
         
         return button
     }()
@@ -144,6 +146,13 @@ class SignInController: UIViewController {
         
         presentAlertOnMainThread(title: "Warning", message: "Sign in is not implemented yet. E-Mail is \(email), password is \(password).", buttonTitle: "Done")
         return
+    }
+    
+    @objc private func handleGoContact() {
+        if let url = URL(string: "https://www.example.com") {
+            let safariVC = SFSafariViewController(url: url)
+            present(safariVC, animated: true, completion: nil)
+        }
     }
     
     @objc private func handleGoSignUp() {
