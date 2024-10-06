@@ -8,7 +8,6 @@ extension ResetPasswordController {
     }
 }
 
-
 extension ResetPasswordController: FormViewModel {
  
     // MARK: - Helpers

@@ -22,7 +22,6 @@ extension SignUpController {
     }
 }
 
-
 extension SignUpController: FormViewModel {
     
     // MARK: - Helpers
