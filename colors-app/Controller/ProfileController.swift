@@ -48,6 +48,7 @@ class ProfileController: UIViewController {
         alertController.addAction(UIAlertAction(title: "Logout", style: .destructive, handler: signOut))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         alertController.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
+        
         present(alertController, animated: true)
     }
 }

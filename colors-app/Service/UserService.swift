@@ -1,7 +1,6 @@
 import UIKit
 import Firebase
 
-// MARK: - UserService
 struct UserService {
     
     // MARK: - Helpers

@@ -1,6 +1,5 @@
 import FirebaseAuth
 
-// MARK: - Credentials
 struct AuthCredentials {
     let name: String
     let username: String
@@ -8,7 +7,6 @@ struct AuthCredentials {
     let password: String
 }
 
-// MARK: - AuthService
 struct AuthService {
     
     // MARK: - Helpers
