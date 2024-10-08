@@ -4,13 +4,10 @@ class SignUpController: UIViewController {
     
     // MARK: - Properties
     private let signUpHeaderView = AuthHeaderView(title: "Sign Up", subtitle: "Create a new account", type: .signup)
-    
     private let nameTextField = AuthTextField(fieldType: .name)
     private let usernameTextField = AuthTextField(fieldType: .username)
     private let emailTextField = AuthTextField(fieldType: .email)
     private let passwordTextField = AuthTextField(fieldType: .password)
-    
-    private let signUpButton = CButton(title: "Sign Up", hasBackground: true, fontSize: .med)
     
     private lazy var backSignIn: UIButton = {
         let button = UIButton(type: .system)
@@ -20,12 +17,23 @@ class SignUpController: UIViewController {
         return button
     }()
     
+    public lazy var signUpButton: UIButton = {
+        let button = CButton(title: "Sign Up", hasBackground: true)
+        button.backgroundColor = .systemBrown.withAlphaComponent(0.5)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        
+        return button
+    }()
+    
+    public var viewModel = SignUpViewModel()
+    weak var delegate: AuthenticationDelegate?
+    
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.configureUI()
-        self.configureKeyboardHandling()
+        self.configureNotificationObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,11 +48,9 @@ class SignUpController: UIViewController {
     }
     
     // MARK: - Helpers
-    private func configureKeyboardHandling() {
+    private func configureNotificationObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
     }
     
     private func configureUI() {
@@ -106,35 +112,58 @@ class SignUpController: UIViewController {
         ])
         
         self.signUpButton.addTarget(self, action: #selector(doSignUp), for: .touchUpInside)
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+        
+        self.nameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        self.usernameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        self.emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        self.passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        
+        updateForm()
     }
     
     // MARK: - Actions
+    @objc func textDidChange(sender: UITextField) {
+        if sender == nameTextField {
+            viewModel.name = sender.text
+        } else if sender == usernameTextField {
+            viewModel.username = sender.text
+        } else if sender == emailTextField {
+            viewModel.email = sender.text
+        } else {
+            viewModel.password = sender.text
+        }
+        
+        updateForm()
+    }
+    
     @objc private func doSignUp() {
-        presentAlertOnMainThread(title: "Warning", message: "Sign up is not implemented yet.", buttonTitle: "Done")
-        return
+        guard let name = nameTextField.text else { return }
+        guard let username = usernameTextField.text else { return }
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        let credentials = AuthCredentials(name: name, username: username, email: email, password: password)
+        
+        showLoader(true)
+        
+        AuthService.signUp(withCredential: credentials) { error in
+            
+            self.showLoader(false)
+            
+            if let error = error {
+                self.presentAlertOnMainThread(title: "Error", message: error.localizedDescription, buttonTitle: "Done")
+                return
+            }
+            
+            self.presentAlertOnMainThread(title: "Success!", message: "Congratulations! You have successfully registered. Please sign in.", buttonTitle: "Done")
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     @objc private func handleBackSignIn() {
         navigationController?.popViewController(animated: true)
-    }
-    
-    // MARK: - Keyboard Handling
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height / 3
-            }
-        }
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
     }
 }
 

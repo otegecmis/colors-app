@@ -3,59 +3,67 @@ import FirebaseAuth
 
 class MainTabController: UITabBarController {
     
+    // MARK: - Properties
+    var user: User? {
+        didSet {
+            guard let user = user else { return }
+            configureViewControllers(withUser: user)
+        }
+    }
+    
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         
         checkIfUserIsLoggedIn()
-        configureViewControllers()
-        openLogoutMenu()
+        fetchUser()
+    }
+    
+    // MARK: - Service
+    func fetchUser() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        UserService.fetchUser(withUid: uid) { user in
+            self.user = user
+        }
     }
     
     // MARK: - Helpers
-    func configureViewControllers() {
-        view.backgroundColor = .systemBackground
-        
-        let latest = navigationTabController(title: "Latest", image: UIImage(systemName: "paintpalette"), rootViewController: LatestController())
-        let create = navigationTabController(title: "Create", image: UIImage(systemName: "paintbrush"), rootViewController: CreateController())
-        let random = navigationTabController(title: "Random", image: UIImage(systemName: "swatchpalette"), rootViewController: RandomController())
-        let profile = navigationTabController(title: "Profile", image: UIImage(systemName: "theatermask.and.paintbrush"), rootViewController: ProfileController())
-        
-        viewControllers = [latest, create, random, profile]
-    }
-    
     func checkIfUserIsLoggedIn() {
-        if Auth.auth().currentUser == nil {
+        let currentUser = Auth.auth().currentUser
+                
+        if currentUser  == nil {
             DispatchQueue.main.async {
-                let nav = UINavigationController(rootViewController: SignInController())
+                let signInController = SignInController()
+                signInController.delegate = self
+                let nav = UINavigationController(rootViewController: signInController)
                 nav.modalPresentationStyle = .fullScreen
                 self.present(nav, animated: true, completion: nil)
             }
         }
     }
     
-    func openLogoutMenu() {
-        if let profileTabBarItemView = self.tabBar.items?[3].value(forKey: "view") as? UIView {
-            let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLogoutMenu))
-            profileTabBarItemView.addGestureRecognizer(longPressGesture)
-        }
+    func configureViewControllers(withUser user: User) {
+        view.backgroundColor = .systemBackground
+
+        let profileController = ProfileController()
+
+        profileController.user = self.user
+        profileController.tabBarItem.title = "Profile"
+        
+        let latest = navigationTabController(title: "Latest", image: UIImage(systemName: "paintpalette"), rootViewController: LatestController())
+        let create = navigationTabController(title: "Create", image: UIImage(systemName: "paintbrush"), rootViewController: CreateController())
+        let random = navigationTabController(title: "Random", image: UIImage(systemName: "swatchpalette"), rootViewController: RandomController())
+        let profile = navigationTabController(title: "Profile", image: UIImage(systemName: "theatermask.and.paintbrush"), rootViewController: profileController)
+        
+        viewControllers = [latest, create, random, profile]
     }
-    
-    func logout(action: UIAlertAction) {
-        presentAlertOnMainThread(title: "Warning", message: "Logout is not implemented yet.", buttonTitle: "Done")
-        return
-    }
-    
-    // MARK: - Actions
-    @objc func handleLogoutMenu(gesture: UILongPressGestureRecognizer) {
-        if gesture.state == .began {
-            let alertController = UIAlertController(title: "Name Surname - @username", message: nil, preferredStyle: .actionSheet)
-            
-            alertController.addAction(UIAlertAction(title: "Logout", style: .destructive, handler: logout))
-            alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-            alertController.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
-            present(alertController, animated: true)
-        }
+}
+
+// MARK: - AuthenticationDelegate
+extension MainTabController: AuthenticationDelegate {
+    func authenticationDidComplete() {
+        fetchUser()
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

@@ -33,7 +33,7 @@ class AuthHeaderView: UIView {
         return label
     }()
     
-    // MARK: - Init
+    // MARK: - Initializers
     init(title: String, subtitle: String, type: CustomTextFieldType) {
         super.init(frame: .zero)
         

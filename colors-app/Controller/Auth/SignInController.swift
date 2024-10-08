@@ -1,14 +1,16 @@
 import UIKit
+import SafariServices
+
+protocol AuthenticationDelegate: AnyObject {
+    func authenticationDidComplete()
+}
 
 class SignInController: UIViewController {
     
     // MARK: - Properties
     private let signInHeaderView = AuthHeaderView(title: "Sign In", subtitle: "Welcome back!", type: .signin)
-    
     private let emailTextField = AuthTextField(fieldType: .email)
     private let passwordTextField = AuthTextField(fieldType: .password)
-    
-    private let signInButton = CButton(title: "Sign In", hasBackground: true)
     
     private lazy var goForgotPassword: UIButton = {
         let button = UIButton(type: .system)
@@ -21,6 +23,7 @@ class SignInController: UIViewController {
     private lazy var goContact: UIButton = {
         let button = UIButton(type: .system)
         button.attributedTitle(firstPart: "Do you need help?", secondPart: "Contact Us")
+        button.addTarget(self, action: #selector(handleGoContact), for: .touchUpInside)
         
         return button
     }()
@@ -33,12 +36,23 @@ class SignInController: UIViewController {
         return button
     }()
     
+    public lazy var signInButton: UIButton = {
+        let button = CButton(title: "Sign In", hasBackground: true)
+        button.backgroundColor = .systemBrown.withAlphaComponent(0.5)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        
+        return button
+    }()
+    
+    public var viewModel = SignInViewModel()
+    weak var delegate: AuthenticationDelegate?
+    
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.configureUI()
-        self.configureKeyboardHandling()
+        self.configureNotificationObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,11 +67,9 @@ class SignInController: UIViewController {
     }
     
     // MARK: - Helpers
-    private func configureKeyboardHandling() {
+    private func configureNotificationObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
     }
     
     private func configureUI() {
@@ -113,12 +125,50 @@ class SignInController: UIViewController {
         ])
         
         self.signInButton.addTarget(self, action: #selector(doSignIn), for: .touchUpInside)
+        
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard)))
+        
+        self.emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        self.passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        
+        updateForm()
     }
     
     // MARK: - Actions
+    @objc func textDidChange(sender: UITextField) {
+        if sender == emailTextField {
+            viewModel.email = sender.text
+        } else {
+            viewModel.password = sender.text
+        }
+        
+        updateForm()
+    }
+    
     @objc private func doSignIn() {
-        presentAlertOnMainThread(title: "Warning", message: "Sign in is not implemented yet.", buttonTitle: "Done")
-        return
+        guard let email = emailTextField.text else { return }
+        guard let password = passwordTextField.text else { return }
+        
+        showLoader(true)
+        
+        AuthService.signIn(withEmail: email, password: password) { result, error in
+            
+            self.showLoader(false)
+            
+            if let error = error {
+                self.presentAlertOnMainThread(title: "Error", message: error.localizedDescription, buttonTitle: "Done")
+                return
+            }
+            
+            self.delegate?.authenticationDidComplete()
+        }
+    }
+    
+    @objc private func handleGoContact() {
+        if let url = URL(string: "https://www.example.com") {
+            let safariVC = SFSafariViewController(url: url)
+            present(safariVC, animated: true, completion: nil)
+        }
     }
     
     @objc private func handleGoSignUp() {
@@ -127,27 +177,8 @@ class SignInController: UIViewController {
     }
     
     @objc private func handleGoForgotPassword() {
-        let controller = ResetPassword()
+        let controller = ResetPasswordController()
         navigationController?.pushViewController(controller, animated: true)
-    }
-    
-    // MARK: - Keyboard Handling
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height / 3
-            }
-        }
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
-        }
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
     }
 }
 
