@@ -18,6 +18,12 @@
 		8B82DE4D2CA2E0CD0072DD2C /* SignInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82DE4C2CA2E0C90072DD2C /* SignInController.swift */; };
 		8B82DE4F2CA2E1D30072DD2C /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82DE4E2CA2E1D00072DD2C /* Buttons.swift */; };
 		8B82DE512CA2E76B0072DD2C /* ResetPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82DE502CA2E7650072DD2C /* ResetPasswordController.swift */; };
+		8B9363602CB2C0CD0075CC4A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B93635F2CB2C0CC0075CC4A /* User.swift */; };
+		8B9363632CB2C0E40075CC4A /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9363622CB2C0DD0075CC4A /* AuthService.swift */; };
+		8B9363682CB3E3F40075CC4A /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 8B9363672CB3E3F40075CC4A /* JGProgressHUD */; };
+		8B93636A2CB3E7EE0075CC4A /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9363692CB3E7EA0075CC4A /* UserService.swift */; };
+		8B93636D2CB3F5ED0075CC4A /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 8B93636C2CB3F5ED0075CC4A /* FirebaseDatabase */; };
+		8B93636F2CB412220075CC4A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B93636E2CB4121D0075CC4A /* Constants.swift */; };
 		8BAFF3E42CAD5D0F004FD64B /* SignUpController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFF3E32CAD5D08004FD64B /* SignUpController+Extension.swift */; };
 		8BAFF3E62CAD5DF8004FD64B /* SignInController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFF3E52CAD5DF0004FD64B /* SignInController+Extension.swift */; };
 		8BAFF3E82CAD5E8A004FD64B /* ResetPasswordController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAFF3E72CAD5E85004FD64B /* ResetPasswordController+Extension.swift */; };
@@ -49,6 +55,10 @@
 		8B82DE4C2CA2E0C90072DD2C /* SignInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInController.swift; sourceTree = "<group>"; };
 		8B82DE4E2CA2E1D00072DD2C /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		8B82DE502CA2E7650072DD2C /* ResetPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordController.swift; sourceTree = "<group>"; };
+		8B93635F2CB2C0CC0075CC4A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8B9363622CB2C0DD0075CC4A /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		8B9363692CB3E7EA0075CC4A /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		8B93636E2CB4121D0075CC4A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8BAFF3E32CAD5D08004FD64B /* SignUpController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignUpController+Extension.swift"; sourceTree = "<group>"; };
 		8BAFF3E52CAD5DF0004FD64B /* SignInController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignInController+Extension.swift"; sourceTree = "<group>"; };
 		8BAFF3E72CAD5E85004FD64B /* ResetPasswordController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ResetPasswordController+Extension.swift"; sourceTree = "<group>"; };
@@ -78,6 +88,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B240FFC2CA18E63004D32F0 /* FirebaseAuth in Frameworks */,
+				8B9363682CB3E3F40075CC4A /* JGProgressHUD in Frameworks */,
+				8B93636D2CB3F5ED0075CC4A /* FirebaseDatabase in Frameworks */,
 				8B240FFE2CA18E63004D32F0 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -124,6 +136,38 @@
 			path = Alert;
 			sourceTree = "<group>";
 		};
+		8B93635C2CB2C0850075CC4A /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8B93636E2CB4121D0075CC4A /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		8B93635D2CB2C0B80075CC4A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8B93635F2CB2C0CC0075CC4A /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8B93635E2CB2C0C10075CC4A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				8B9363692CB3E7EA0075CC4A /* UserService.swift */,
+				8B9363622CB2C0DD0075CC4A /* AuthService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		8B93636B2CB3F5ED0075CC4A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8BAFF3E12CAD5CD4004FD64B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				8BE27A912C9CC78600C27144 /* colors-app */,
+				8B93636B2CB3F5ED0075CC4A /* Frameworks */,
 				8BE27A902C9CC78600C27144 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -183,11 +228,13 @@
 		8BE27A912C9CC78600C27144 /* colors-app */ = {
 			isa = PBXGroup;
 			children = (
+				8B93635D2CB2C0B80075CC4A /* Model */,
 				8B2410022CA18F86004D32F0 /* Views */,
 				8BAFF3F12CAD6191004FD64B /* ViewModel */,
 				8BE27AA72C9CC7C200C27144 /* Controller */,
+				8B93635E2CB2C0C10075CC4A /* Service */,
 				8BAFF3E12CAD5CD4004FD64B /* Extensions */,
-				8BE27AB02C9DACE200C27144 /* Utils */,
+				8B93635C2CB2C0850075CC4A /* Utils */,
 				8BE27AA62C9CC7BF00C27144 /* Support */,
 				8BE27AA02C9CC78800C27144 /* Info.plist */,
 			);
@@ -216,13 +263,6 @@
 				8BE27AB32C9DAD1800C27144 /* CreateController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		8BE27AB02C9DACE200C27144 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +311,7 @@
 			mainGroup = 8BE27A862C9CC78600C27144;
 			packageReferences = (
 				8B240FFA2CA18E63004D32F0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				8B9363662CB3E3F40075CC4A /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 			);
 			productRefGroup = 8BE27A902C9CC78600C27144 /* Products */;
 			projectDirPath = "";
@@ -303,6 +344,8 @@
 				8B82DE4D2CA2E0CD0072DD2C /* SignInController.swift in Sources */,
 				8BAFF3EC2CAD5F0B004FD64B /* UITabBarController+Extension.swift in Sources */,
 				8BAFF3F42CAD61A5004FD64B /* SignInViewModel.swift in Sources */,
+				8B93636F2CB412220075CC4A /* Constants.swift in Sources */,
+				8B9363602CB2C0CD0075CC4A /* User.swift in Sources */,
 				8BAFF3F82CAD6804004FD64B /* ResetPasswordViewModel.swift in Sources */,
 				8BAFF3E62CAD5DF8004FD64B /* SignInController+Extension.swift in Sources */,
 				8BE27AB42C9DAD1800C27144 /* CreateController.swift in Sources */,
@@ -313,6 +356,7 @@
 				8B24100B2CA1991F004D32F0 /* AuthTextField.swift in Sources */,
 				8BE27AAD2C9DA8A100C27144 /* RandomController.swift in Sources */,
 				8BAFF3FA2CAD72F6004FD64B /* SignUpViewModel.swift in Sources */,
+				8B93636A2CB3E7EE0075CC4A /* UserService.swift in Sources */,
 				8BE27AAF2C9DA8AE00C27144 /* ProfileController.swift in Sources */,
 				8B75B6772CA437E500D2A02D /* AlertLabels.swift in Sources */,
 				8B82DE512CA2E76B0072DD2C /* ResetPasswordController.swift in Sources */,
@@ -324,6 +368,7 @@
 				8BAFF3EA2CAD5EEF004FD64B /* UIViewController+Extension.swift in Sources */,
 				8BAFF3E42CAD5D0F004FD64B /* SignUpController+Extension.swift in Sources */,
 				8BAFF3EE2CAD5F21004FD64B /* UIButton+Extension.swift in Sources */,
+				8B9363632CB2C0E40075CC4A /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +603,14 @@
 				minimumVersion = 11.2.0;
 			};
 		};
+		8B9363662CB3E3F40075CC4A /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -570,6 +623,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8B240FFA2CA18E63004D32F0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		8B9363672CB3E3F40075CC4A /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B9363662CB3E3F40075CC4A /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
+		};
+		8B93636C2CB3F5ED0075CC4A /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B240FFA2CA18E63004D32F0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

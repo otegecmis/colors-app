@@ -1,6 +1,10 @@
 import UIKit
 import SafariServices
 
+protocol AuthenticationDelegate: AnyObject {
+    func authenticationDidComplete()
+}
+
 class SignInController: UIViewController {
     
     // MARK: - Properties
@@ -41,6 +45,7 @@ class SignInController: UIViewController {
     }()
     
     public var viewModel = SignInViewModel()
+    weak var delegate: AuthenticationDelegate?
     
     // MARK: - Lifecycles
     override func viewDidLoad() {
@@ -144,8 +149,19 @@ class SignInController: UIViewController {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         
-        presentAlertOnMainThread(title: "Warning", message: "Sign in is not implemented yet. E-Mail is \(email), password is \(password).", buttonTitle: "Done")
-        return
+        showLoader(true)
+        
+        AuthService.signIn(withEmail: email, password: password) { result, error in
+            
+            self.showLoader(false)
+            
+            if let error = error {
+                self.presentAlertOnMainThread(title: "Error", message: error.localizedDescription, buttonTitle: "Done")
+                return
+            }
+            
+            self.delegate?.authenticationDidComplete()
+        }
     }
     
     @objc private func handleGoContact() {
