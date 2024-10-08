@@ -26,6 +26,7 @@ class SignUpController: UIViewController {
     }()
     
     public var viewModel = SignUpViewModel()
+    weak var delegate: AuthenticationDelegate?
     
     // MARK: - Lifecycles
     override func viewDidLoad() {
@@ -143,10 +144,22 @@ class SignUpController: UIViewController {
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
         
-        let msg = "Sign up is not implemented yet. Name is \(name), username is \(username), e-mail is \(email), password is \(password)."
+        let credentials = AuthCredentials(name: name, username: username, email: email, password: password)
         
-        presentAlertOnMainThread(title: "Warning", message: msg, buttonTitle: "Done")
-        return
+        showLoader(true)
+        
+        AuthService.signUp(withCredential: credentials) { error in
+            
+            self.showLoader(false)
+            
+            if let error = error {
+                self.presentAlertOnMainThread(title: "Error", message: error.localizedDescription, buttonTitle: "Done")
+                return
+            }
+            
+            self.presentAlertOnMainThread(title: "Success!", message: "Congratulations! You have successfully registered. Please sign in.", buttonTitle: "Done")
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     @objc private func handleBackSignIn() {

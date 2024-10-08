@@ -91,8 +91,20 @@ class ResetPasswordController: UIViewController {
     @objc private func doReset() {
         guard let email = emailTextField.text else { return }
         
-        presentAlertOnMainThread(title: "Warning", message: "Reset password is not implemented yet. E-Mail will be sent to \(email).", buttonTitle: "Done")
-        return
+        showLoader(true)
+        
+        AuthService.resetPassword(withEmail: email) { error in
+            
+            self.showLoader(false)
+            
+            if let error = error {
+                self.presentAlertOnMainThread(title: "Error", message: error.localizedDescription, buttonTitle: "Done")
+                return
+            }
+            
+            self.presentAlertOnMainThread(title: "Success!", message: "Your password reset information has been sent to your email address. Please log in again after following the instructions.", buttonTitle: "Done")
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     @objc private func handleBackSignIn() {
