@@ -1,9 +1,9 @@
 import UIKit
 
-class CreateController: UIViewController, UIColorPickerViewControllerDelegate {
+final class CreateController: UIViewController, UIColorPickerViewControllerDelegate {
     
     // MARK: - Properties
-    private var selectedColorView: UIView = {
+    private lazy var selectedColorView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemGray
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -64,6 +64,7 @@ class CreateController: UIViewController, UIColorPickerViewControllerDelegate {
         if let color = selectedColor {
             let hexString = color.toHexString()
             print("HEX: \(hexString)")
+            self.dismiss(animated: true)
         } else {
             print("ERROR: No color selected.")
         }

@@ -1,6 +1,6 @@
 import UIKit
 
-class RandomController: UIViewController {
+final class RandomController: UIViewController {
     
     // MARK: - Properties
     var color: UIColor?
@@ -28,7 +28,7 @@ class RandomController: UIViewController {
         return view
     }()
     
-    private let hexLabel: UILabel = {
+    private lazy var hexLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "No color selected."
@@ -37,7 +37,7 @@ class RandomController: UIViewController {
         return label
     }()
     
-    private let usernameLabel: UILabel = {
+    private lazy var usernameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "@username"

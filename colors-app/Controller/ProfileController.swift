@@ -1,7 +1,7 @@
 import UIKit
 import FirebaseAuth
 
-class ProfileController: UIViewController {
+final class ProfileController: UIViewController {
     
     // MARK: - Properties
     var user: User?

@@ -1,6 +1,6 @@
 import UIKit
 
-class LatestController: UIViewController {
+final class LatestController: UIViewController {
     
     // MARK: - Properties
     private let colorGridView = ColorGrid()
