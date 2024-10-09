@@ -12,6 +12,8 @@
 		8B24100B2CA1991F004D32F0 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B24100A2CA1991F004D32F0 /* AuthTextField.swift */; };
 		8B2410102CA1A383004D32F0 /* AuthHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B24100F2CA1A37E004D32F0 /* AuthHeaderView.swift */; };
 		8B2410122CA1AC73004D32F0 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2410112CA1AC6A004D32F0 /* SignUpController.swift */; };
+		8B3048822CB6A20C00EF4618 /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3048812CB6A20800EF4618 /* UIColor-Extension.swift */; };
+		8B3048862CB6B27D00EF4618 /* ColorGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3048852CB6B27B00EF4618 /* ColorGrid.swift */; };
 		8B75B6772CA437E500D2A02D /* AlertLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75B6762CA437E300D2A02D /* AlertLabels.swift */; };
 		8B75B67A2CA4380C00D2A02D /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75B6792CA4380700D2A02D /* AlertView.swift */; };
 		8B75B67C2CA439BB00D2A02D /* AlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75B67B2CA439B900D2A02D /* AlertButton.swift */; };
@@ -49,6 +51,8 @@
 		8B24100A2CA1991F004D32F0 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
 		8B24100F2CA1A37E004D32F0 /* AuthHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeaderView.swift; sourceTree = "<group>"; };
 		8B2410112CA1AC6A004D32F0 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		8B3048812CB6A20800EF4618 /* UIColor-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Extension.swift"; sourceTree = "<group>"; };
+		8B3048852CB6B27B00EF4618 /* ColorGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGrid.swift; sourceTree = "<group>"; };
 		8B75B6762CA437E300D2A02D /* AlertLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertLabels.swift; sourceTree = "<group>"; };
 		8B75B6792CA4380700D2A02D /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		8B75B67B2CA439B900D2A02D /* AlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertButton.swift; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 			children = (
 				8B75B6782CA4380200D2A02D /* Alert */,
 				8B2410092CA1942B004D32F0 /* Auth */,
+				8B3048852CB6B27B00EF4618 /* ColorGrid.swift */,
 				8B82DE4E2CA2E1D00072DD2C /* Buttons.swift */,
 			);
 			path = Views;
@@ -174,6 +179,7 @@
 				8BAFF3E22CAD5D02004FD64B /* Auth */,
 				8BAFF3E92CAD5EEB004FD64B /* UIViewController+Extension.swift */,
 				8BAFF3EB2CAD5F06004FD64B /* UITabBarController+Extension.swift */,
+				8B3048812CB6A20800EF4618 /* UIColor-Extension.swift */,
 				8BAFF3ED2CAD5F1D004FD64B /* UIButton+Extension.swift */,
 			);
 			path = Extensions;
@@ -345,6 +351,7 @@
 				8BAFF3EC2CAD5F0B004FD64B /* UITabBarController+Extension.swift in Sources */,
 				8BAFF3F42CAD61A5004FD64B /* SignInViewModel.swift in Sources */,
 				8B93636F2CB412220075CC4A /* Constants.swift in Sources */,
+				8B3048822CB6A20C00EF4618 /* UIColor-Extension.swift in Sources */,
 				8B9363602CB2C0CD0075CC4A /* User.swift in Sources */,
 				8BAFF3F82CAD6804004FD64B /* ResetPasswordViewModel.swift in Sources */,
 				8BAFF3E62CAD5DF8004FD64B /* SignInController+Extension.swift in Sources */,
@@ -353,6 +360,7 @@
 				8BE27AAB2C9DA89000C27144 /* LatestController.swift in Sources */,
 				8B82DE4F2CA2E1D30072DD2C /* Buttons.swift in Sources */,
 				8BE27AA92C9CC7F200C27144 /* MainTabController.swift in Sources */,
+				8B3048862CB6B27D00EF4618 /* ColorGrid.swift in Sources */,
 				8B24100B2CA1991F004D32F0 /* AuthTextField.swift in Sources */,
 				8BE27AAD2C9DA8A100C27144 /* RandomController.swift in Sources */,
 				8BAFF3FA2CAD72F6004FD64B /* SignUpViewModel.swift in Sources */,
