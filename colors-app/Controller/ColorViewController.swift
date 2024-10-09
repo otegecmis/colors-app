@@ -1,6 +1,6 @@
 import UIKit
 
-class RandomController: UIViewController {
+class ColorViewController: UIViewController {
     
     // MARK: - Properties
     var color: UIColor?
@@ -50,30 +50,14 @@ class RandomController: UIViewController {
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        getColor()
         configureViewController()
         configureUI()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        getColor()
-        
-        if let color = color {
-            colorView.backgroundColor = color
-            hexLabel.text = color.toHexString()
-            usernameLabel.text = "@username"
-        }
-    }
-    
     // MARK: - Helpers
-    private func getColor() {
-        color = MOCK_COLORS.shuffled().first
-    }
-    
     private func configureViewController() {
         view.backgroundColor = .systemBackground
-        title = "Random"
+        title = "Color View"
     }
     
     private func configureUI() {

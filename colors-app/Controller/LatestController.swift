@@ -50,8 +50,8 @@ class LatestController: UIViewController {
     }
 }
 
-// MARK: - UICollectionViewDataSource, UICollectionViewDelegate
-extension LatestController: UICollectionViewDataSource, UICollectionViewDelegate {
+// MARK: - UICollectionViewDataSource
+extension LatestController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return colors.count
     }
@@ -63,5 +63,15 @@ extension LatestController: UICollectionViewDataSource, UICollectionViewDelegate
         cell.backgroundColor = colors[indexPath.item]
         
         return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension LatestController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let colorViewController = ColorViewController()
+        
+        colorViewController.color = colors[indexPath.item]
+        navigationController?.pushViewController(colorViewController, animated: true)
     }
 }
