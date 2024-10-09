@@ -16,6 +16,7 @@ class SignInController: UIViewController {
         let button = UIButton(type: .system)
         button.attributedTitle(firstPart: "Forgot your password?")
         button.addTarget(self, action: #selector(handleGoForgotPassword), for: .touchUpInside)
+        button.tintColor = UIColor.label
         
         return button
     }()
@@ -24,6 +25,7 @@ class SignInController: UIViewController {
         let button = UIButton(type: .system)
         button.attributedTitle(firstPart: "Do you need help?", secondPart: "Contact Us")
         button.addTarget(self, action: #selector(handleGoContact), for: .touchUpInside)
+        button.tintColor = UIColor.label
         
         return button
     }()
@@ -32,13 +34,14 @@ class SignInController: UIViewController {
         let button = UIButton(type: .system)
         button.attributedTitle(firstPart: "Don't have an account?", secondPart: "Sign Up")
         button.addTarget(self, action: #selector(handleGoSignUp), for: .touchUpInside)
+        button.tintColor = UIColor.label
         
         return button
     }()
     
     public lazy var signInButton: UIButton = {
         let button = CButton(title: "Sign In", hasBackground: true)
-        button.backgroundColor = .systemBrown.withAlphaComponent(0.5)
+        button.backgroundColor = .label.withAlphaComponent(0.5)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         
         return button

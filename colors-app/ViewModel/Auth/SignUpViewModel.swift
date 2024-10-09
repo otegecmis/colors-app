@@ -13,10 +13,10 @@ struct SignUpViewModel: AuthViewModel {
     }
     
     var buttonBGColor: UIColor {
-        return formIsValid ? .systemBrown : .systemBrown.withAlphaComponent(0.5)
+        return formIsValid ? .label : .label.withAlphaComponent(0.5)
     }
     
     var buttonTitleColor: UIColor {
-        return formIsValid ? .white : UIColor(white: 1, alpha: 0.67)
+        return formIsValid ? .systemBackground : UIColor(white: 1, alpha: 0.67)
     }
 }

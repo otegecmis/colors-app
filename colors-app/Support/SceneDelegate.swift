@@ -8,9 +8,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        
+        configAppearance()
+        
         window?.windowScene = windowScene
         window?.rootViewController = MainTabController()
         window?.makeKeyAndVisible()
+    }
+    
+    func configAppearance() {
+        UITabBar.appearance().tintColor = .label
+        UITabBar.appearance().barTintColor = .white
+        
+        UINavigationBar.appearance().tintColor = .label
+        UINavigationBar.appearance().barTintColor = .label
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.label]
+        
+        UIBarButtonItem.appearance().tintColor = .label
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {}

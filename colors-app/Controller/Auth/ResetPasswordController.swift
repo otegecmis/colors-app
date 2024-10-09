@@ -10,13 +10,14 @@ class ResetPasswordController: UIViewController {
         let button = UIButton(type: .system)
         button.attributedTitle(firstPart: "Already have an account?", secondPart: "Sign In")
         button.addTarget(self, action: #selector(handleBackSignIn), for: .touchUpInside)
+        button.tintColor = UIColor.label
         
         return button
     }()
     
     public lazy var resetButton: UIButton = {
         let button = CButton(title: "Reset", hasBackground: true)
-        button.backgroundColor = .systemBrown.withAlphaComponent(0.5)
+        button.backgroundColor = .label.withAlphaComponent(0.5)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         
         return button

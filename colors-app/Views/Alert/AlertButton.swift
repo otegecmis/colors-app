@@ -15,7 +15,7 @@ class AlertButton: UIButton {
     init() {
         super.init(frame: .zero)
         
-        self.backgroundColor = .systemBrown
+        self.backgroundColor = .label
         self.setTitle("Done", for: .normal)
         configure()
     }
