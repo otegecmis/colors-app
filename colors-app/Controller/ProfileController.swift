@@ -86,8 +86,8 @@ class ProfileController: UIViewController {
     }
 }
 
-// MARK: - UICollectionViewDataSource, UICollectionViewDelegate
-extension ProfileController: UICollectionViewDataSource, UICollectionViewDelegate {
+// MARK: - UICollectionViewDataSource
+extension ProfileController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return colors.count
     }
@@ -99,5 +99,15 @@ extension ProfileController: UICollectionViewDataSource, UICollectionViewDelegat
         cell.backgroundColor = colors[indexPath.item]
         
         return cell
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension ProfileController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let colorViewController = ColorViewController()
+        
+        colorViewController.color = colors[indexPath.item]
+        navigationController?.pushViewController(colorViewController, animated: true)
     }
 }
