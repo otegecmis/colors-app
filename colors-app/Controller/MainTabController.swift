@@ -1,7 +1,7 @@
 import UIKit
 import FirebaseAuth
 
-class MainTabController: UITabBarController {
+final class MainTabController: UITabBarController {
     
     // MARK: - Properties
     var user: User? {
@@ -11,21 +11,13 @@ class MainTabController: UITabBarController {
         }
     }
     
-    lazy var floatingButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.tintColor = .white
-        button.backgroundColor = .label
-        button.setImage(UIImage(systemName: "paintbrush"), for: .normal)
-        
-        button.addTarget(self, action: #selector(handleFloatingButton), for: .touchUpInside)
-        
-        return button
-    }()
+    private let createPlaceholderController = UIViewController()
     
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.delegate = self
         checkIfUserIsLoggedIn()
         fetchUser()
     }
@@ -61,24 +53,17 @@ class MainTabController: UITabBarController {
         profileController.user = self.user
         profileController.tabBarItem.title = "Profile"
         
+        createPlaceholderController.tabBarItem = UITabBarItem(title: "Create", image: UIImage(systemName: "paintbrush"), selectedImage: nil)
+
         let latest = navigationTabController(title: "Latest", image: UIImage(systemName: "paintpalette"), rootViewController: LatestController())
         let random = navigationTabController(title: "Random", image: UIImage(systemName: "swatchpalette"), rootViewController: RandomController())
         let profile = navigationTabController(title: "Profile", image: UIImage(systemName: "theatermask.and.paintbrush"), rootViewController: profileController)
         
-        viewControllers = [latest, random, profile]
-        
-        view.addSubview(floatingButton)
-        floatingButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        floatingButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
-        floatingButton.widthAnchor.constraint(equalToConstant: 56).isActive = true
-        floatingButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -65).isActive = true
-        floatingButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16).isActive = true
-        floatingButton.layer.cornerRadius = 56 / 2
+        viewControllers = [latest, createPlaceholderController, random, profile]
     }
     
     // MARK: - Actions
-    @objc private func handleFloatingButton() {
+    private func presentCreateController() {
         let createController = CreateController()
         let navigationController = UINavigationController(rootViewController: createController)
         
@@ -98,6 +83,16 @@ extension MainTabController: AuthenticationDelegate {
     func authenticationDidComplete() {
         fetchUser()
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension MainTabController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if viewController == createPlaceholderController {
+            presentCreateController()
+            return false
+        }
+        return true
     }
 }
 
