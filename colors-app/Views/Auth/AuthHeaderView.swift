@@ -78,17 +78,19 @@ class AuthHeaderView: UIView {
         case .signup:
             if let image = UIImage(systemName: "person.crop.circle.badge.plus") {
                 let tintedImage = image.withRenderingMode(.alwaysOriginal)
-                logoImageView.tintColor = UIColor.systemBrown
+                logoImageView.tintColor = UIColor.label
                 logoImageView.image = tintedImage
             }
         case .signin:
-            if let image = UIImage(systemName: "paintpalette") {
-                logoImageView.image = image.withRenderingMode(.alwaysOriginal)
+            if let image = UIImage(systemName: "paintpalette.fill") {
+                let tintedImage = image.withRenderingMode(.alwaysOriginal)
+                logoImageView.tintColor = UIColor.label
+                logoImageView.image = tintedImage
             }
         case .reset:
             if let image = UIImage(systemName: "key") {
                 let tintedImage = image.withRenderingMode(.alwaysOriginal)
-                logoImageView.tintColor = UIColor.systemBrown
+                logoImageView.tintColor = UIColor.label
                 logoImageView.image = tintedImage
             }
         }

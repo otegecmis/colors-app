@@ -17,9 +17,9 @@ class CButton: UIButton {
         self.layer.cornerRadius = 12
         self.layer.masksToBounds = true
         
-        self.backgroundColor = hasBackground ? .systemBrown : .clear
+        self.backgroundColor = hasBackground ? .label : .clear
         
-        let titleColor: UIColor = hasBackground ? .white : .systemBrown
+        let titleColor: UIColor = hasBackground ? .white : .label
         self.setTitleColor(titleColor, for: .normal)
         
         setSize(fontSize: fontSize)
