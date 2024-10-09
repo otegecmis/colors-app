@@ -14,6 +14,7 @@
 		8B2410122CA1AC73004D32F0 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2410112CA1AC6A004D32F0 /* SignUpController.swift */; };
 		8B3048822CB6A20C00EF4618 /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3048812CB6A20800EF4618 /* UIColor-Extension.swift */; };
 		8B3048862CB6B27D00EF4618 /* ColorGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3048852CB6B27B00EF4618 /* ColorGrid.swift */; };
+		8B30488A2CB6C47D00EF4618 /* ColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3048892CB6C47B00EF4618 /* ColorViewController.swift */; };
 		8B75B6772CA437E500D2A02D /* AlertLabels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75B6762CA437E300D2A02D /* AlertLabels.swift */; };
 		8B75B67A2CA4380C00D2A02D /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75B6792CA4380700D2A02D /* AlertView.swift */; };
 		8B75B67C2CA439BB00D2A02D /* AlertButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B75B67B2CA439B900D2A02D /* AlertButton.swift */; };
@@ -53,6 +54,7 @@
 		8B2410112CA1AC6A004D32F0 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		8B3048812CB6A20800EF4618 /* UIColor-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Extension.swift"; sourceTree = "<group>"; };
 		8B3048852CB6B27B00EF4618 /* ColorGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGrid.swift; sourceTree = "<group>"; };
+		8B3048892CB6C47B00EF4618 /* ColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorViewController.swift; sourceTree = "<group>"; };
 		8B75B6762CA437E300D2A02D /* AlertLabels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertLabels.swift; sourceTree = "<group>"; };
 		8B75B6792CA4380700D2A02D /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		8B75B67B2CA439B900D2A02D /* AlertButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertButton.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				8BE27AAC2C9DA8A100C27144 /* RandomController.swift */,
 				8BE27AAE2C9DA8AE00C27144 /* ProfileController.swift */,
 				8BE27AB32C9DAD1800C27144 /* CreateController.swift */,
+				8B3048892CB6C47B00EF4618 /* ColorViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				8B75B6772CA437E500D2A02D /* AlertLabels.swift in Sources */,
 				8B82DE512CA2E76B0072DD2C /* ResetPasswordController.swift in Sources */,
 				8BAFF3E82CAD5E8A004FD64B /* ResetPasswordController+Extension.swift in Sources */,
+				8B30488A2CB6C47D00EF4618 /* ColorViewController.swift in Sources */,
 				8B75B67C2CA439BB00D2A02D /* AlertButton.swift in Sources */,
 				8B75B67A2CA4380C00D2A02D /* AlertView.swift in Sources */,
 				8B2410102CA1A383004D32F0 /* AuthHeaderView.swift in Sources */,
