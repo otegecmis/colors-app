@@ -65,6 +65,9 @@ final class MainTabController: UITabBarController {
     // MARK: - Actions
     private func presentCreateController() {
         let createController = CreateController()
+        
+        createController.user = self.user
+        
         let navigationController = UINavigationController(rootViewController: createController)
         
         navigationController.modalPresentationStyle = .pageSheet
