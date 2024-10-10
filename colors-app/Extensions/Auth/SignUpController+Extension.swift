@@ -7,6 +7,7 @@ extension SignUpController {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
                 self.view.frame.origin.y -= keyboardSize.height / 3
+                self.signUpHeaderView.hideIconImageView()
             }
         }
     }
@@ -14,6 +15,7 @@ extension SignUpController {
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
+            self.signUpHeaderView.showIconImageView()
         }
     }
     

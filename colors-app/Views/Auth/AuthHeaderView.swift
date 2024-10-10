@@ -95,4 +95,12 @@ class AuthHeaderView: UIView {
             }
         }
     }
+    
+    public func hideIconImageView() {
+        logoImageView.isHidden = true
+    }
+    
+    public func showIconImageView() {
+        logoImageView.isHidden = false
+    }
 }

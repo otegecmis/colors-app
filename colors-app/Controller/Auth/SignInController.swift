@@ -8,7 +8,7 @@ protocol AuthenticationDelegate: AnyObject {
 class SignInController: UIViewController {
     
     // MARK: - Properties
-    private let signInHeaderView = AuthHeaderView(title: "Sign In", subtitle: "Welcome back!", type: .signin)
+    public let signInHeaderView = AuthHeaderView(title: "Sign In", subtitle: "Welcome back!", type: .signin)
     private let emailTextField = AuthTextField(fieldType: .email)
     private let passwordTextField = AuthTextField(fieldType: .password)
     
