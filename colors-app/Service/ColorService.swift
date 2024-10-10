@@ -30,7 +30,30 @@ struct ColorService {
     }
     
     static func fetchColors(completion: @escaping([Color]?, Error?) -> Void) {
-            COLLECTION_COLORS.order(by: "timestamp", descending: true).getDocuments { snapshot, error in
+        COLLECTION_COLORS.order(by: "timestamp", descending: true).getDocuments { snapshot, error in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            
+            guard let documents = snapshot?.documents else {
+                completion([], nil)
+                return
+            }
+            
+            let colors = documents.map { doc -> Color in
+                let data = doc.data()
+                return Color(dictionary: data)
+            }
+            
+            completion(colors, nil)
+        }
+    }
+    
+    static func fetchColors(forUserUID userUID: String, completion: @escaping([Color]?, Error?) -> Void) {
+        COLLECTION_COLORS.whereField("userUID", isEqualTo: userUID)
+            .order(by: "timestamp", descending: true)
+            .getDocuments { snapshot, error in
                 if let error = error {
                     completion(nil, error)
                     return
@@ -41,38 +64,12 @@ struct ColorService {
                     return
                 }
                 
-                // Gelen belgeleri Color modeline dönüştürüyoruz
                 let colors = documents.map { doc -> Color in
                     let data = doc.data()
-                    return Color(dictionary: data) // Sadece veriyi geri döneriz, hex'i işlemiyoruz
+                    return Color(dictionary: data)
                 }
                 
                 completion(colors, nil)
             }
-        }
-        
-        // Belirli bir kullanıcıya ait renkleri Color modelinde dönen fonksiyon
-        static func fetchColors(forUserUID userUID: String, completion: @escaping([Color]?, Error?) -> Void) {
-            COLLECTION_COLORS.whereField("userUID", isEqualTo: userUID)
-                .order(by: "timestamp", descending: true)
-                .getDocuments { snapshot, error in
-                    if let error = error {
-                        completion(nil, error)
-                        return
-                    }
-                    
-                    guard let documents = snapshot?.documents else {
-                        completion([], nil)
-                        return
-                    }
-                    
-                    // Gelen belgeleri Color modeline dönüştürüyoruz
-                    let colors = documents.map { doc -> Color in
-                        let data = doc.data()
-                        return Color(dictionary: data) // Sadece veriyi geri döneriz, hex'i işlemiyoruz
-                    }
-                    
-                    completion(colors, nil)
-                }
-        }
+    }
 }

@@ -6,16 +6,28 @@ final class CreateController: UIViewController, UIColorPickerViewControllerDeleg
     // MARK: - Properties
     private lazy var selectedColorView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray
+        view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
+    }()
+    
+    private lazy var tapLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.font = label.font.withSize(12)
+        label.text = "Tap"
+        
+        return label
     }()
     
     private lazy var createBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleCreateBarButton))
     private var selectedColor: UIColor? = .systemGray6 {
         didSet {
             createBarButton.isEnabled = true
+            tapLabel.isHidden = true
+            selectedColorView.layer.borderWidth = 0
         }
     }
     
@@ -40,6 +52,7 @@ final class CreateController: UIViewController, UIColorPickerViewControllerDeleg
     
     private func configureUI() {
         view.addSubview(selectedColorView)
+        view.addSubview(tapLabel)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openColorPicker))
         
@@ -50,10 +63,15 @@ final class CreateController: UIViewController, UIColorPickerViewControllerDeleg
             selectedColorView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
             selectedColorView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 10),
             selectedColorView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -10),
-            selectedColorView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10)
+            selectedColorView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            
+            tapLabel.centerYAnchor.constraint(equalTo: selectedColorView.centerYAnchor),
+            tapLabel.centerXAnchor.constraint(equalTo: selectedColorView.centerXAnchor)
         ])
         
         selectedColorView.layer.cornerRadius = 10
+        selectedColorView.layer.borderColor = UIColor.label.cgColor
+        selectedColorView.layer.borderWidth = 2
     }
     
     func colorPickerViewControllerDidSelectColor(_ viewController: UIColorPickerViewController) {
