@@ -72,4 +72,24 @@ struct ColorService {
                 completion(colors, nil)
             }
     }
+    
+    static func fetchRandomColor(completion: @escaping(Color?, Error?) -> Void) {
+        COLLECTION_COLORS.getDocuments { snapshot, error in
+            if let error = error {
+                completion(nil, error)
+                return
+            }
+            
+            guard let documents = snapshot?.documents, !documents.isEmpty else {
+                completion(nil, nil)
+                return
+            }
+            
+            let randomIndex = Int.random(in: 0..<documents.count)
+            let randomDocument = documents[randomIndex]
+            let randomColor = Color(dictionary: randomDocument.data())
+            
+            completion(randomColor, nil)
+        }
+    }
 }
