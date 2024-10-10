@@ -71,7 +71,7 @@ final class ColorViewController: UIViewController {
         view.addSubview(usernameLabel)
         
         NSLayoutConstraint.activate([
-            colorView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150),
+            colorView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
             colorView.bottomAnchor.constraint(equalTo: hexLabelView.topAnchor, constant: 0),
             colorView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
             colorView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
@@ -86,7 +86,7 @@ final class ColorViewController: UIViewController {
             hexLabel.centerYAnchor.constraint(equalTo: hexLabelView.centerYAnchor),
             
             usernameLabelView.topAnchor.constraint(equalTo: hexLabelView.bottomAnchor),
-            usernameLabelView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150),
+            usernameLabelView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -60),
             usernameLabelView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
             usernameLabelView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
             usernameLabelView.heightAnchor.constraint(equalToConstant: 30),
@@ -100,20 +100,20 @@ final class ColorViewController: UIViewController {
         hexLabel.text = color?.hex
         usernameLabel.text = "@\(username)"
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(goUser))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.goUser(_ :)))
         
-        usernameLabelView.addGestureRecognizer(tapGesture)
-        usernameLabel.isUserInteractionEnabled = true
-        usernameLabelView.isUserInteractionEnabled = true
+        self.usernameLabel.isUserInteractionEnabled = true
+        self.usernameLabel.addGestureRecognizer(tapGesture)
     }
     
     // MARK: - Actions
-    @objc func goUser() {
-        guard let uid = color?.uid else { return }
+    @objc func goUser(_ sender: UITapGestureRecognizer) {
+        guard let uid = color?.userUID else { return }
+        
         UserService.fetchUser(withUid: uid) { user in
             let profileController = ProfileController()
-            
             profileController.user = user
+            
             self.navigationController?.pushViewController(profileController, animated: true)
         }
     }
