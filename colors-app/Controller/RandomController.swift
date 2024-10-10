@@ -3,7 +3,7 @@ import UIKit
 final class RandomController: UIViewController {
     
     // MARK: - Properties
-    var color: UIColor?
+    var color: Color?
     
     private lazy var colorView: UIView = {
         let view = UIView()
@@ -58,17 +58,25 @@ final class RandomController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         getColor()
-        
-        if let color = color {
-            colorView.backgroundColor = color
-            hexLabel.text = color.toHexString()
-            usernameLabel.text = "@username"
-        }
     }
     
     // MARK: - Helpers
     private func getColor() {
-        color = MOCK_COLORS.shuffled().first
+        ColorService.fetchRandomColor { randomColor, error in
+            if let error = error {
+                self.presentAlertOnMainThread(title: "Error", message: error.localizedDescription, buttonTitle: "Done")
+                return
+            }
+            
+            if let color = randomColor {
+                self.color = color
+                self.colorView.backgroundColor = UIColor(hex: color.hex)
+                self.hexLabel.text = color.hex
+                self.usernameLabel.text = "@\(color.username)"
+            } else {
+                self.presentAlertOnMainThread(title: "Error", message: "Could not fetch random color.", buttonTitle: "Done")
+            }
+        }
     }
     
     private func configureViewController() {
@@ -77,10 +85,6 @@ final class RandomController: UIViewController {
     }
     
     private func configureUI() {
-        if let color = color {
-            colorView.backgroundColor = color
-        }
-        
         view.addSubview(colorView)
         view.addSubview(hexLabelView)
         view.addSubview(hexLabel)
@@ -88,7 +92,7 @@ final class RandomController: UIViewController {
         view.addSubview(usernameLabel)
         
         NSLayoutConstraint.activate([
-            colorView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150),
+            colorView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
             colorView.bottomAnchor.constraint(equalTo: hexLabelView.topAnchor, constant: 0),
             colorView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
             colorView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
@@ -103,7 +107,7 @@ final class RandomController: UIViewController {
             hexLabel.centerYAnchor.constraint(equalTo: hexLabelView.centerYAnchor),
             
             usernameLabelView.topAnchor.constraint(equalTo: hexLabelView.bottomAnchor),
-            usernameLabelView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -150),
+            usernameLabelView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -60),
             usernameLabelView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
             usernameLabelView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
             usernameLabelView.heightAnchor.constraint(equalToConstant: 30),
@@ -112,16 +116,21 @@ final class RandomController: UIViewController {
             usernameLabel.centerYAnchor.constraint(equalTo: usernameLabelView.centerYAnchor),
         ])
         
-        hexLabel.text = color?.toHexString()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.goUser(_ :)))
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(goUser))
-        
-        usernameLabelView.addGestureRecognizer(tapGesture)
-        usernameLabelView.isUserInteractionEnabled = true
+        self.usernameLabel.isUserInteractionEnabled = true
+        self.usernameLabel.addGestureRecognizer(tapGesture)
     }
     
     // MARK: - Actions
-    @objc func goUser() {
-        print("DEBUG: goUser()")
+    @objc func goUser(_ sender: UITapGestureRecognizer) {
+        guard let uid = color?.userUID else { return }
+        
+        UserService.fetchUser(withUid: uid) { user in
+            let profileController = ProfileController()
+            profileController.user = user
+            
+            self.navigationController?.pushViewController(profileController, animated: true)
+        }
     }
 }
