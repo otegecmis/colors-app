@@ -3,7 +3,7 @@ import UIKit
 class SignUpController: UIViewController {
     
     // MARK: - Properties
-    private let signUpHeaderView = AuthHeaderView(title: "Sign Up", subtitle: "Create a new account", type: .signup)
+    public let signUpHeaderView = AuthHeaderView(title: "Sign Up", subtitle: "Create a new account", type: .signup)
     private let nameTextField = AuthTextField(fieldType: .name)
     private let usernameTextField = AuthTextField(fieldType: .username)
     private let emailTextField = AuthTextField(fieldType: .email)
