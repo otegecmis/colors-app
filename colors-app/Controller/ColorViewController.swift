@@ -3,7 +3,7 @@ import UIKit
 final class ColorViewController: UIViewController {
     
     // MARK: - Properties
-    var color: UIColor?
+    var color: Color?
     
     private lazy var colorView: UIView = {
         let view = UIView()
@@ -40,7 +40,6 @@ final class ColorViewController: UIViewController {
     private lazy var usernameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "@username"
         label.textAlignment = .center
         label.font = label.font.withSize(12)
         
@@ -62,7 +61,7 @@ final class ColorViewController: UIViewController {
     
     private func configureUI() {
         if let color = color {
-            colorView.backgroundColor = color
+            colorView.backgroundColor = UIColor(hex: color.hex)
         }
         
         view.addSubview(colorView)
@@ -96,16 +95,26 @@ final class ColorViewController: UIViewController {
             usernameLabel.centerYAnchor.constraint(equalTo: usernameLabelView.centerYAnchor),
         ])
         
-        hexLabel.text = color?.toHexString()
+        guard let username = color?.username else { return }
+        
+        hexLabel.text = color?.hex
+        usernameLabel.text = "@\(username)"
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(goUser))
         
         usernameLabelView.addGestureRecognizer(tapGesture)
+        usernameLabel.isUserInteractionEnabled = true
         usernameLabelView.isUserInteractionEnabled = true
     }
     
     // MARK: - Actions
     @objc func goUser() {
-        print("DEBUG: goUser()")
+        guard let uid = color?.uid else { return }
+        UserService.fetchUser(withUid: uid) { user in
+            let profileController = ProfileController()
+            
+            profileController.user = user
+            self.navigationController?.pushViewController(profileController, animated: true)
+        }
     }
 }

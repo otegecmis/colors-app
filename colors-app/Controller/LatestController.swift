@@ -6,14 +6,32 @@ final class LatestController: UIViewController {
     private let colorGridView = ColorGrid()
     private let refreshControl = UIRefreshControl()
     
-    private var colors: [UIColor] = MOCK_COLORS.shuffled()
+    private var colors: [Color] = []
     
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        fetchColors()
         configureViewController()
         configureUI()
+    }
+    
+    // MARK: - Service
+    func fetchColors() {
+        ColorService.fetchColors { colors, error in
+            if let error = error {
+                print("ERROR: \(error.localizedDescription)")
+                return
+            }
+            
+            if let colors = colors {
+                self.colors = colors
+                DispatchQueue.main.async {
+                    self.colorGridView.collectionView.reloadData()
+                }
+            }
+        }
     }
     
     // MARK: - Helpers
@@ -43,10 +61,11 @@ final class LatestController: UIViewController {
     
     // MARK: - Actions
     @objc private func handleRefresh() {
-        colors.shuffle()
-        colorGridView.configure(with: colors)
+        fetchColors()
         
-        refreshControl.endRefreshing()
+        DispatchQueue.main.async {
+            self.refreshControl.endRefreshing()
+        }
     }
 }
 
@@ -60,7 +79,7 @@ extension LatestController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath)
         
         cell.applyRoundedCorners(radius: 5)
-        cell.backgroundColor = colors[indexPath.item]
+        cell.backgroundColor = UIColor(hex: colors[indexPath.item].hex)
         
         return cell
     }
