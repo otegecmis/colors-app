@@ -92,4 +92,25 @@ struct ColorService {
             completion(randomColor, nil)
         }
     }
+    
+    static func deleteColor(color: Color, completion: @escaping(Error?) -> Void) {
+        let colorRef = COLLECTION_COLORS.document(color.uid)
+        let userRef = COLLECTION_USERS.document(color.userUID)
+        
+        colorRef.delete { error in
+            if let error = error {
+                completion(error)
+                return
+            }
+            
+            userRef.updateData(["colors": FieldValue.arrayRemove([color.toDictionary()])]) { error in
+                if let error = error {
+                    completion(error)
+                    return
+                }
+                
+                completion(nil)
+            }
+        }
+    }
 }

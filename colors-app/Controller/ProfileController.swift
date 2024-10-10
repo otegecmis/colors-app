@@ -142,6 +142,8 @@ extension ProfileController: UICollectionViewDelegate {
         let colorViewController = ColorViewController()
         
         colorViewController.color = colors[indexPath.item]
+        colorViewController.user = user
+        
         navigationController?.pushViewController(colorViewController, animated: true)
     }
 }

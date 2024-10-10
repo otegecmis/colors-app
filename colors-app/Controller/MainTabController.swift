@@ -55,7 +55,11 @@ final class MainTabController: UITabBarController {
         
         createPlaceholderController.tabBarItem = UITabBarItem(title: "Create", image: UIImage(systemName: "paintbrush"), selectedImage: nil)
 
-        let latest = navigationTabController(title: "Latest", image: UIImage(systemName: "paintpalette"), rootViewController: LatestController())
+        let latestController = LatestController()
+        
+        latestController.user = self.user
+        
+        let latest = navigationTabController(title: "Latest", image: UIImage(systemName: "paintpalette"), rootViewController: latestController)
         let random = navigationTabController(title: "Random", image: UIImage(systemName: "swatchpalette"), rootViewController: RandomController())
         let profile = navigationTabController(title: "Profile", image: UIImage(systemName: "theatermask.and.paintbrush"), rootViewController: profileController)
         
