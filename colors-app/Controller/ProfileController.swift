@@ -9,14 +9,38 @@ final class ProfileController: UIViewController {
     private let colorGridView = ColorGrid()
     private let refreshControl = UIRefreshControl()
     
-    private var colors: [UIColor] = MOCK_COLORS
-        
+    private var colors: [Color] = []
+    
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        fetchColors()
         configureViewController()
         configureUI()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        fetchColors()
+    }
+    
+    // MARK: - Service
+    func fetchColors() {
+        guard let uid = user?.uid else { return }
+        
+        ColorService.fetchColors(forUserUID: uid) { colors, error in
+            if let error = error {
+                print("ERROR: \(error.localizedDescription)")
+                return
+            }
+            
+            if let colors = colors {
+                self.colors = colors
+                DispatchQueue.main.async {
+                    self.colorGridView.collectionView.reloadData()
+                }
+            }
+        }
     }
     
     // MARK: - Helpers
@@ -79,10 +103,11 @@ final class ProfileController: UIViewController {
     }
     
     @objc private func handleRefresh() {
-        colors.shuffle()
-        colorGridView.configure(with: colors)
+        fetchColors()
         
-        refreshControl.endRefreshing()
+        DispatchQueue.main.async {
+            self.refreshControl.endRefreshing()
+        }
     }
 }
 
@@ -96,7 +121,7 @@ extension ProfileController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath)
         
         cell.applyRoundedCorners(radius: 5)
-        cell.backgroundColor = colors[indexPath.item]
+        cell.backgroundColor = UIColor(hex: colors[indexPath.item].hex)
         
         return cell
     }
