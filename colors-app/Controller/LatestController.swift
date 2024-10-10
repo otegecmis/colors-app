@@ -8,6 +8,8 @@ final class LatestController: UIViewController {
     
     private var colors: [Color] = []
     
+    var user: User?
+    
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +93,8 @@ extension LatestController: UICollectionViewDelegate {
         let colorViewController = ColorViewController()
         
         colorViewController.color = colors[indexPath.item]
+        colorViewController.user = user
+        
         navigationController?.pushViewController(colorViewController, animated: true)
     }
 }

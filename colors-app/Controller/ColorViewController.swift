@@ -1,9 +1,11 @@
 import UIKit
+import FirebaseAuth
 
 final class ColorViewController: UIViewController {
     
     // MARK: - Properties
     var color: Color?
+    var user: User?
     
     private lazy var colorView: UIView = {
         let view = UIView()
@@ -49,14 +51,19 @@ final class ColorViewController: UIViewController {
     // MARK: - Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         configureViewController()
         configureUI()
+        hideIfNotOwner()
     }
     
     // MARK: - Helpers
     private func configureViewController() {
         view.backgroundColor = .systemBackground
         title = "Color View"
+        
+        let deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(handleDeleteButton))
+        navigationItem.rightBarButtonItem = deleteButton
     }
     
     private func configureUI() {
@@ -106,6 +113,12 @@ final class ColorViewController: UIViewController {
         self.usernameLabel.addGestureRecognizer(tapGesture)
     }
     
+    func hideIfNotOwner() {
+        if user?.username != color?.username  {
+            navigationItem.rightBarButtonItem = nil
+        }
+    }
+    
     // MARK: - Actions
     @objc func goUser(_ sender: UITapGestureRecognizer) {
         guard let uid = color?.userUID else { return }
@@ -115,6 +128,23 @@ final class ColorViewController: UIViewController {
             profileController.user = user
             
             self.navigationController?.pushViewController(profileController, animated: true)
+        }
+    }
+    
+    @objc func handleDeleteButton() {
+        guard let colorToDelete = self.color else {
+            self.presentAlertOnMainThread(title: "Done", message: "No color selected to delete.", buttonTitle: "Done")
+            return
+        }
+        
+        ColorService.deleteColor(color: colorToDelete) { error in
+            if let error = error {
+                self.presentAlertOnMainThread(title: "Error", message: error.localizedDescription, buttonTitle: "Done")
+                return
+            }
+            
+            self.presentAlertOnMainThread(title: "Success!", message: "Color deleted successfully.", buttonTitle: "Done")
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }
