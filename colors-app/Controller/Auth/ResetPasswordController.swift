@@ -103,7 +103,7 @@ class ResetPasswordController: UIViewController {
                 return
             }
             
-            self.presentAlertOnMainThread(title: "Success!", message: "Your password reset information has been sent to your email address. Please log in again after following the instructions.", buttonTitle: "Done")
+            self.presentAlertOnMainThread(title: "Success!", message: "Your password reset information has been sent to your email address.", buttonTitle: "Done")
             self.navigationController?.popViewController(animated: true)
         }
     }
