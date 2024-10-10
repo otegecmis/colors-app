@@ -18,6 +18,7 @@ final class ProfileController: UIViewController {
         fetchColors()
         configureViewController()
         configureUI()
+        hideIfNotOwner()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -72,6 +73,14 @@ final class ProfileController: UIViewController {
         
         refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
         colorGridView.collectionView.refreshControl = refreshControl
+    }
+    
+    func hideIfNotOwner() {
+        let currentUser = Auth.auth().currentUser
+        
+        if currentUser?.email != user?.email {
+            navigationItem.rightBarButtonItem = nil
+        }
     }
     
     func signOut(action: UIAlertAction) {
