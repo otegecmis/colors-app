@@ -28,3 +28,27 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     <img src="assets/light-mode/auth/reset-password/2.png" style="width: 30%;" />
     <img src="assets/light-mode/auth/reset-password/3.png" style="width: 30%;" />  
 </div>
+
+### 2. Installation
+
+1. **Clone the repository**
+
+```sh
+git clone https://github.com/otegecmis/colors-app.git
+```
+
+2. **Navigate to the project directory**
+
+```sh
+cd colors-app
+```
+
+3. **Open the Xcode project**
+
+```sh
+open colors-app.xcodeproj
+```
+
+4. **Run the app**
+
+Press the `Run` button in Xcode or use the shortcut `Cmd + R`.
