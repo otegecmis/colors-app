@@ -4,14 +4,27 @@ The Colors App is designed to let _users create and share custom colors._ Built 
 
 ### 1. Screens
 
+These are the `latest`, `color view` and `profile` screens.
+
 <div style="float: left;">
     <img src="assets/light-mode/1.png" style="width: 30%;" />
     <img src="assets/light-mode/2.png" style="width: 30%;" />
+    <img src="assets/light-mode/3.png" style="width: 30%;" />
 </div>
+
+These are the `color creation` screens.
 
 <div style="float: left;">
     <img src="assets/light-mode/create-color/1.png" style="width: 30%;" />
     <img src="assets/light-mode/create-color/2.png" style="width: 30%;" />
+</div>
+
+These are the `sign out`, owner’s `color view`, and `color deletion` screens.
+
+<div style="float: left;">
+    <img src="assets/light-mode/4.png" style="width: 30%;" />
+    <img src="assets/light-mode/5.png" style="width: 30%;" />
+    <img src="assets/light-mode/6.png" style="width: 30%;" />
 </div>
 
 #### Auth
