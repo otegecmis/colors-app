@@ -1,8 +1,10 @@
 ## Colors App
 
-The Colors App is designed to let _users create and share custom colors._ Built entirely with `programmatic UIKit`, it leverages custom, dark mode-compatible components to deliver an engaging user experience. The app is seamlessly integrated with `Firebase`, using `Firebase Authentication` for managing users and `Firestore` as the database for storing and retrieving user-generated color data.
+The Colors App is designed to let _users create and share custom colors._ Built entirely with `programmatic UIKit`, it leverages custom, `dark mode-compatible` components to deliver an engaging user experience. The app is seamlessly integrated with `Firebase`, using `Firebase Authentication` for managing users and `Firestore` as the database for storing and retrieving user-generated color data.
 
 ### 1. Screens
+
+1. **Light Mode**
 
 These are the `latest`, `color view` and `profile` screens.
 
