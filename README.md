@@ -1,8 +1,22 @@
 ## Colors App
 
-The Colors App is designed to let _users create and share custom colors._ Built entirely with `programmatic UIKit`, it leverages custom components to deliver an engaging user experience. The app is seamlessly integrated with `Firebase`, using `Firebase Authentication` for managing users and `Firestore` as the database for storing and retrieving user-generated color data.
+The Colors App is designed to let _users create and share custom colors._ Built entirely with `programmatic UIKit`, it leverages custom, `dark mode-compatible` components to deliver an engaging user experience. The app is seamlessly integrated with `Firebase`, using `Firebase Authentication` for managing users and `Firestore` as the database for storing and retrieving user-generated color data.
 
 ### 1. Screens
+
+1. **Dark Mode**
+
+These are some `dark mode` screens.
+
+For a more detailed view, please refer to the `light mode` section ~~or watch the video preview~~.
+
+<div style="float: left;">
+    <img src="assets/dark-mode/1.png" style="width: 30%;" />
+    <img src="assets/dark-mode/2.png" style="width: 30%;" />
+    <img src="assets/dark-mode/3.png" style="width: 30%;" />
+</div>
+
+2. **Light Mode**
 
 These are the `latest`, `color view` and `profile` screens.
 
@@ -72,6 +86,17 @@ cd colors-app
 open colors-app.xcodeproj
 ```
 
-4. **Run the app**
+4. **Set Up Firebase**
+
+This app uses `Firestore` and `Firebase Authentication`.
+
+Follow these steps before running the app:
+
+- Go to `Firebase Console` and create a new project (or use an existing one).
+- Download the `GoogleService-Info.plist` file from your Firebase project.
+- Add the `GoogleService-Info.plist` file to your `Xcode project by dragging it into the project files`.
+- Go back to the `Firebase Console` and `enable Firestore and Authentication`.
+
+5. **Run the app**
 
 Press the `Run` button in Xcode or use the shortcut `Cmd + R`.
