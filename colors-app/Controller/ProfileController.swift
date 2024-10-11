@@ -52,6 +52,14 @@ final class ProfileController: UIViewController {
     func configureViewController() {
         view.backgroundColor = .systemBackground
         
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.systemBackground
+        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
+        
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        
         if let username = user?.username {
             navigationItem.title = "@\(username)"
         }
