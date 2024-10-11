@@ -4,7 +4,17 @@ The Colors App is designed to let _users create and share custom colors._ Built 
 
 ### 1. Screens
 
-1. **Light Mode**
+1. **Dark Mode**
+
+These are some `dark mode` screens. For a more detailed view, please refer to the `light mode` section ~~or watch the video preview~~.
+
+<div style="float: left;">
+    <img src="assets/dark-mode/1.png" style="width: 30%;" />
+    <img src="assets/dark-mode/2.png" style="width: 30%;" />
+    <img src="assets/dark-mode/3.png" style="width: 30%;" />
+</div>
+
+2. **Light Mode**
 
 These are the `latest`, `color view` and `profile` screens.
 
