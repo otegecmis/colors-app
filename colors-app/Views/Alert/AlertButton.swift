@@ -25,7 +25,7 @@ class AlertButton: UIButton {
         translatesAutoresizingMaskIntoConstraints = false
         
         layer.cornerRadius = 10
-        setTitleColor(.white, for: .normal)
+        setTitleColor(.systemBackground, for: .normal)
         titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
     }
     
