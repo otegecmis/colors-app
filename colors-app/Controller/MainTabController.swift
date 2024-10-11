@@ -48,13 +48,19 @@ final class MainTabController: UITabBarController {
     func configureViewControllers(withUser user: User) {
         view.backgroundColor = .systemBackground
         
+        tabBar.barTintColor = UIColor.systemBackground
+        tabBar.tintColor = UIColor.label
+        tabBar.unselectedItemTintColor = UIColor.secondaryLabel
+        
+        
+        
         let profileController = ProfileController()
         
         profileController.user = self.user
         profileController.tabBarItem.title = "Profile"
         
         createPlaceholderController.tabBarItem = UITabBarItem(title: "Create", image: UIImage(systemName: "paintbrush"), selectedImage: nil)
-
+        
         let latestController = LatestController()
         
         latestController.user = self.user

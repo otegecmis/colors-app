@@ -40,6 +40,14 @@ final class LatestController: UIViewController {
     func configureViewController() {
         view.backgroundColor = .systemBackground
         title =  "Latest"
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.systemBackground
+        appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.label]
+        
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
     }
     
     func configureUI() {

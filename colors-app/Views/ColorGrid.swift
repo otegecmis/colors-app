@@ -32,6 +32,7 @@ class ColorGrid: UIView {
     // MARK: - Helpers
     private func configureUI() {
         addSubview(collectionView)
+        collectionView.backgroundColor = .systemBackground
         
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         

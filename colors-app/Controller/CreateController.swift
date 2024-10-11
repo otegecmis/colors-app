@@ -6,7 +6,7 @@ final class CreateController: UIViewController, UIColorPickerViewControllerDeleg
     // MARK: - Properties
     private lazy var selectedColorView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -18,6 +18,7 @@ final class CreateController: UIViewController, UIColorPickerViewControllerDeleg
         label.textAlignment = .center
         label.font = label.font.withSize(12)
         label.text = "Tap"
+        label.textColor = UIColor.label
         
         return label
     }()
@@ -43,7 +44,7 @@ final class CreateController: UIViewController, UIColorPickerViewControllerDeleg
     
     // MARK: - Helpers
     private func configureViewController() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
         title = "Create"
         navigationItem.rightBarButtonItem = createBarButton
