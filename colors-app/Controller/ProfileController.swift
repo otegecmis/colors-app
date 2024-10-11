@@ -25,6 +25,10 @@ final class ProfileController: UIViewController {
         fetchColors()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
     // MARK: - Service
     func fetchColors() {
         guard let uid = user?.uid else { return }

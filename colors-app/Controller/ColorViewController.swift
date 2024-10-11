@@ -57,6 +57,10 @@ final class ColorViewController: UIViewController {
         hideIfNotOwner()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
     // MARK: - Helpers
     private func configureViewController() {
         view.backgroundColor = .systemBackground
