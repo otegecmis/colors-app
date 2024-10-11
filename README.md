@@ -1,10 +1,27 @@
 ## Colors App
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+The Colors App is designed to let users create and share custom colors. Built entirely with `programmatic UIKit`, it leverages custom components to deliver an engaging user experience. The app is seamlessly integrated with `Firebase`, using `Firebase Authentication` for managing users and `Firestore` as the database for storing and retrieving user-generated color data.
 
 ### 1. Screens
 
-#### 1. Auth
+#### 1. Latest, Random
+
+<div style="float: left;">
+    <img src="assets/light-mode/latest-random/1.png" style="width: 30%;" />
+    <img src="assets/light-mode/latest-random/2.png" style="width: 30%;" />
+    <img src="assets/light-mode/latest-random/3.png" style="width: 30%;" />
+</div>
+
+#### 2. Create Color
+
+<div style="float: left;">
+    <img src="assets/light-mode/create-color/1.png" style="width: 30%;" />
+    <img src="assets/light-mode/create-color/2.png" style="width: 30%;" />
+    <img src="assets/light-mode/create-color/3.png" style="width: 30%;" />
+    <img src="assets/light-mode/create-color/4.png" style="width: 30%;" />
+</div>
+
+#### 3. Auth
 
 ##### 1. Sign In
 
