@@ -2,7 +2,7 @@
 
 An iOS app built with Swift and Firebase for creating and sharing custom colors.
 
-- Built entirely with **UIKit (Programmatic)**, using **Auto Layout** to create a consistent user interface and develop custom reusable UI components with **Dark Mode** compatibility.
+- Built entirely with **UIKit (Programmatic)**, using **Auto Layout** for layout setup and developing custom reusable UI components with Dark Mode compatibility.
 - Implemented **MVC** architecture and adopted **MVVM** in some features to separate logic from the UI.
 - Used **Firestore** for data storage and retrieval while handling user authentication with **Firebase Authentication**.
 
