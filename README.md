@@ -1,6 +1,10 @@
 ## Colors App
 
-This iOS app is designed to let users create and share custom colors. Built entirely with `programmatic UIKit`, it leverages custom, `dark mode-compatible` components to deliver an engaging user experience. The app is seamlessly integrated with `Firebase`, using `Firebase Authentication` for managing users and `Firestore` as the database for storing and retrieving user-generated color data.
+An iOS app built with Swift and Firebase for creating and sharing custom colors.
+
+- Built entirely with **UIKit (Programmatic)**, using **Auto Layout** to create a consistent user interface and develop custom reusable UI components with **Dark Mode** compatibility.
+- Implemented **MVC** architecture and adopted **MVVM** in some features to separate logic from the UI.
+- Used **Firestore** for data storage and retrieval while handling user authentication with **Firebase Authentication**.
 
 ### 1. Screens
 
