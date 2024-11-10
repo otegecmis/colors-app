@@ -1,10 +1,9 @@
 ## Colors App
 
-An iOS app built with Swift and Firebase for creating and sharing custom colors.
-
+- An iOS app developed with **Swift** and **Firebase** for creating and sharing custom colors.
 - Built entirely with **UIKit (Programmatic)**, using **Auto Layout** for layout setup and developing custom reusable UI components with Dark Mode compatibility.
-- Implemented **MVC** architecture and adopted **MVVM** in some features to separate logic from the UI.
-- Used **Firestore** for data storage and retrieval while handling user authentication with **Firebase Authentication**.
+- Followed **MVC** architecture for core functionalities, adopting **MVVM** in selected features to better separate logic from UI elements.
+- Utilized **Firestore** for data storage and retrieval and managed user authentication with **Firebase Authentication**.
 
 ### 1. Screens
 
